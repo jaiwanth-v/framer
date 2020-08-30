@@ -1,35 +1,66 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Options.scss";
+import { AppContext } from "../../Context/App.context";
+import { ADD_ITEM } from "../../Reducer/types";
 
 interface Props {}
 
 const Options: React.FC<Props> = () => {
+  const { dispatch } = useContext(AppContext);
   return (
     <div className="shadow rounded-lg h-75 p-4 mt-5">
       <h3 className="text-center p-2 mb-4">Options</h3>
       <div className="icons">
         <div className="d-flex flex-column text-center">
-          <i className="fas fa-images fa-2x"></i>
+          <i
+            onClick={() => {
+              dispatch({ type: ADD_ITEM, payload: "image" });
+            }}
+            className="fas fa-images fa-2x"
+          ></i>
           <small>Image</small>
         </div>
         <div className="d-flex flex-column text-center">
-          <i className="fas fa-font fa-2x"></i>
+          <i
+            onClick={() => {
+              dispatch({ type: ADD_ITEM, payload: "text" });
+            }}
+            className="fas fa-font fa-2x"
+          ></i>
           <small>Text</small>
         </div>
         <div className="d-flex flex-column text-center">
-          <i className="fas fa-paragraph fa-2x"></i>
+          <i
+            onClick={() => {
+              dispatch({ type: ADD_ITEM, payload: "paragraph" });
+            }}
+            className="fas fa-paragraph fa-2x"
+          ></i>
           <small>Paragraph</small>
         </div>
         <div className="d-flex flex-column text-center">
-          <i className="fas fa-link fa-2x"></i>
+          <i
+            onClick={() => {
+              dispatch({ type: ADD_ITEM, payload: "link" });
+            }}
+            className="fas fa-link fa-2x"
+          ></i>
           <small>Link</small>
         </div>
         <div className="d-flex flex-column text-center">
-          <i className="fas fa-heading fa-2x"></i>
+          <i
+            onClick={() => {
+              dispatch({ type: ADD_ITEM, payload: "heading" });
+            }}
+            className="fas fa-heading fa-2x"
+          ></i>
           <small>Heading</small>
         </div>
         <div className="d-flex flex-column align-items-center">
           <svg
+            onClick={() => {
+              dispatch({ type: ADD_ITEM, payload: "button" });
+            }}
             width="2em"
             height="2.09em"
             viewBox="0 0 16 16"
@@ -45,19 +76,37 @@ const Options: React.FC<Props> = () => {
           <small>Button</small>
         </div>
         <div className="d-flex flex-column text-center">
-          <i className="fas fa-grip-lines fa-2x"></i>
+          <i
+            onClick={() => {
+              dispatch({ type: ADD_ITEM, payload: "hline" });
+            }}
+            className="fas fa-grip-lines fa-2x"
+          ></i>
           <small>Horizontal Line</small>
         </div>
         <div className="d-flex flex-column text-center">
-          <i className="fas fa-grip-lines-vertical fa-2x"></i>
+          <i
+            onClick={() => {
+              dispatch({ type: ADD_ITEM, payload: "vline" });
+            }}
+            className="fas fa-grip-lines-vertical fa-2x"
+          ></i>
           <small>Vertical line</small>
         </div>
         <div className="d-flex flex-column text-center">
-          <i className="fas fa-check-circle fa-2x"></i>
+          <i
+            onClick={() => {
+              dispatch({ type: ADD_ITEM, payload: "checkbox" });
+            }}
+            className="fas fa-check-circle fa-2x"
+          ></i>
           <small>Checkbox</small>
         </div>
         <div className="d-flex flex-column align-items-center">
           <svg
+            onClick={() => {
+              dispatch({ type: ADD_ITEM, payload: "input" });
+            }}
             width="2em"
             height="2.09em"
             viewBox="0 0 16 16"
@@ -75,6 +124,9 @@ const Options: React.FC<Props> = () => {
         </div>
         <div className="d-flex flex-column align-items-center">
           <svg
+            onClick={() => {
+              dispatch({ type: ADD_ITEM, payload: "dropdown" });
+            }}
             width="2em"
             height="2.09em"
             viewBox="0 0 16 16"
@@ -94,7 +146,12 @@ const Options: React.FC<Props> = () => {
           <small>Select Dropdown</small>
         </div>
         <div className="d-flex flex-column text-center">
-          <i className="fas fa-dot-circle fa-2x"></i>
+          <i
+            onClick={() => {
+              dispatch({ type: ADD_ITEM, payload: "radio" });
+            }}
+            className="fas fa-dot-circle fa-2x"
+          ></i>
           <small>Radio Input</small>
         </div>
       </div>
