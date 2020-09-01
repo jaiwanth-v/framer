@@ -13,3 +13,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.containment-wrapper .draggable {
+  cursor: pointer;
+  float: left;
+  clear: both;
+}
+
+* {
+  box-sizing: content-box;
+}
+
+.resizable {
+  width: 150px;
+  height: 150px;
+  padding: 0.5em;
+}
+.resizable h3 {
+  text-align: center;
+  margin: 0;
+}

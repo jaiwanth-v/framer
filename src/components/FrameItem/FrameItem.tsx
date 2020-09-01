@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useContext, memo } from "react";
 import ButtonComponent from "../user-components/Button/Button";
 import CheckboxComponent from "../user-components/CheckBox/Checkbox";
 import DropdownComponent from "../user-components/Dropdown/Dropdown";
@@ -11,12 +11,25 @@ import InputComponent from "../user-components/Input Form/InputForm";
 import TextComponent from "../user-components/Text/TextComponent";
 import ParagraphComponent from "../user-components/Paragraph/ParagraphComponent";
 import LinkComponent from "../user-components/Link/LinkComponent";
-
+import $ from "jquery";
+import "jqueryui";
+import { v4 as uuid } from "uuid";
+import { AppContext } from "../../Context/App.context";
+import { SET_CURRENT } from "../../Reducer/types";
 interface Props {
   type: string;
+  id: typeof uuid;
 }
 
-const FrameItem: React.FC<Props> = ({ type }) => {
+const FrameItem: React.FC<Props> = ({ type, id }) => {
+  const { dispatch } = useContext(AppContext);
+  useEffect(() => {
+    $(".resizable").resizable();
+    $(".draggable").draggable({
+      containment: ".containment-wrapper",
+      scroll: false,
+    });
+  });
   const componentToShow = () => {
     switch (type) {
       case "button":
@@ -47,7 +60,15 @@ const FrameItem: React.FC<Props> = ({ type }) => {
         break;
     }
   };
-  return <div>{componentToShow()}</div>;
+
+  return (
+    <div
+      className="draggable"
+      onClick={() => dispatch({ type: SET_CURRENT, payload: id })}
+    >
+      {componentToShow()}
+    </div>
+  );
 };
 
-export default FrameItem;
+export default memo(FrameItem);

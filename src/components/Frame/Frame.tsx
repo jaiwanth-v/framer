@@ -39,9 +39,9 @@ const Frame: React.FC<Props> = () => {
           <MenuItem value={0}>Preview Mode</MenuItem>
         </Select>
       </FormControl>
-      <div className="frame">
+      <div className="frame containment-wrapper">
         {state.items.map((v: Item, i: number) => (
-          <FrameItem type={v.type} key={i} />
+          <FrameItem type={v.type} id={v.id} key={i} />
         ))}
       </div>
     </div>

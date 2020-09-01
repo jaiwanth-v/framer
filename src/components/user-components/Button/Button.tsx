@@ -6,10 +6,11 @@ interface Props {}
 
 const ButtonComponent: React.FC<Props> = () => {
   const { state } = useContext(AppContext);
-  console.log(state);
   return (
     <div>
-      <Button variant="contained">Hello</Button>
+      <Button className="resizable" variant="contained">
+        Hello
+      </Button>
     </div>
   );
 };

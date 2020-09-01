@@ -7,8 +7,8 @@ export function AppProvider(props: any) {
   const [state, dispatch] = useReducer(reducer, {
     edit: true,
     items: [],
+    activeId: null,
   });
-  console.log(state);
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       {props.children}
