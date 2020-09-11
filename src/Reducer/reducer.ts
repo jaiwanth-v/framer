@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import { TOGGLE_EDIT, ADD_ITEM, SET_CURRENT } from "./types";
+import { TOGGLE_EDIT, ADD_ITEM, SET_CURRENT, CHANGE_IMAGE_SRC } from "./types";
 
 interface Action {
   type: string;
@@ -9,6 +9,10 @@ interface Action {
 interface Component {
   type: string;
   id: any;
+  src?: any;
+  value?: any;
+  href?: any;
+  list?: any;
 }
 
 interface AppState {
@@ -35,6 +39,11 @@ export const reducer = (state = initialState, action: Action) => {
       return state.activeId === payload
         ? state
         : { ...state, activeId: payload };
+    case CHANGE_IMAGE_SRC:
+      const newItems = state.items.map((item) =>
+        item.id === payload.id ? { ...item, src: payload.src } : item
+      );
+      return { ...state, items: newItems };
     default:
       return state;
   }

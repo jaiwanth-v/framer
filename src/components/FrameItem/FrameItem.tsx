@@ -13,49 +13,47 @@ import ParagraphComponent from "../user-components/Paragraph/ParagraphComponent"
 import LinkComponent from "../user-components/Link/LinkComponent";
 import $ from "jquery";
 import "jqueryui";
-import { v4 as uuid } from "uuid";
 import { AppContext } from "../../Context/App.context";
 import { SET_CURRENT } from "../../Reducer/types";
 interface Props {
   type: string;
-  id: typeof uuid;
+  id: any;
 }
 
 const FrameItem: React.FC<Props> = ({ type, id }) => {
   const { dispatch } = useContext(AppContext);
   useEffect(() => {
-    $(".resizable").resizable();
+    $(".resizable").resizable({ containment: ".containment-wrapper" });
     $(".draggable").draggable({
       containment: ".containment-wrapper",
-      scroll: false,
     });
   });
   const componentToShow = () => {
     switch (type) {
       case "button":
-        return <ButtonComponent />;
+        return <ButtonComponent id={id} />;
       case "checkbox":
-        return <CheckboxComponent />;
+        return <CheckboxComponent id={id} />;
       case "dropdown":
-        return <DropdownComponent />;
+        return <DropdownComponent id={id} />;
       case "image":
-        return <ImageComponent />;
+        return <ImageComponent id={id} />;
       case "radio":
-        return <RadioComponent />;
+        return <RadioComponent id={id} />;
       case "heading":
-        return <HeadingComponent />;
+        return <HeadingComponent id={id} />;
       case "hline":
-        return <HorizontalLine />;
+        return <HorizontalLine id={id} />;
       case "vline":
-        return <VerticalLine />;
+        return <VerticalLine id={id} />;
       case "input":
-        return <InputComponent />;
+        return <InputComponent id={id} />;
       case "text":
-        return <TextComponent />;
+        return <TextComponent id={id} />;
       case "paragraph":
-        return <ParagraphComponent />;
+        return <ParagraphComponent id={id} />;
       case "link":
-        return <LinkComponent />;
+        return <LinkComponent id={id} />;
       default:
         break;
     }
@@ -63,7 +61,8 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
 
   return (
     <div
-      className="draggable"
+      className="draggable position-absolute"
+      // style={{ top: `${[50 * (1 + Math.floor(Math.random() * 10))]}px` }}
       onClick={() => dispatch({ type: SET_CURRENT, payload: id })}
     >
       {componentToShow()}

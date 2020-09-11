@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Checkbox } from "@material-ui/core";
 
-interface Props {}
+interface Props {
+  id: any;
+}
 
 const CheckboxComponent: React.FC<Props> = () => {
   const [checked, setChecked] = useState(true);

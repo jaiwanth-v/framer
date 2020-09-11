@@ -1,6 +1,8 @@
 import React from "react";
 
-interface Props {}
+interface Props {
+  id: any;
+}
 
 const InputComponent: React.FC<Props> = () => {
   return <div>HI</div>;

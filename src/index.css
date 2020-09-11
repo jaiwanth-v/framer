@@ -21,13 +21,12 @@ code {
 }
 
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 .resizable {
-  width: 150px;
-  height: 150px;
-  padding: 0.5em;
+  width: auto;
+  height: auto;
 }
 .resizable h3 {
   text-align: center;

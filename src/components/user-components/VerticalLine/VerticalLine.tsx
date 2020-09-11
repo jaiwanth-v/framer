@@ -1,6 +1,8 @@
 import React from "react";
 
-interface Props {}
+interface Props {
+  id: any;
+}
 
 const VerticalLine: React.FC<Props> = () => {
   return (

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Select, MenuItem } from "@material-ui/core";
 
-interface Props {}
+interface Props {
+  id: any;
+}
 
 const DropdownComponent: React.FC<Props> = () => {
   const [value, setValue] = useState<any>(10);

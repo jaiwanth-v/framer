@@ -1,7 +1,9 @@
 import React from "react";
 import { TextField } from "@material-ui/core";
 
-interface Props {}
+interface Props {
+  id: any;
+}
 
 const ParagraphComponent: React.FC<Props> = () => {
   return (

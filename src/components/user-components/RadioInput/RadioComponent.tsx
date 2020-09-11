@@ -1,7 +1,9 @@
 import React from "react";
-import { RadioGroup, FormControlLabel, Radio } from "@material-ui/core";
+import { Radio } from "@material-ui/core";
 
-interface Props {}
+interface Props {
+  id: any;
+}
 
 const RadioComponent: React.FC<Props> = () => {
   return (
