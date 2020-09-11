@@ -1,7 +1,7 @@
 import React, { useContext, memo } from "react";
 import { Button } from "@material-ui/core";
 import { AppContext } from "../../../Context/App.context";
-
+import "./Button.scss";
 interface Props {
   id: any;
 }
@@ -15,27 +15,20 @@ const ButtonComponent: React.FC<Props> = () => {
   > => {
     if (state.edit)
       return (
-        <div
-          style={{
-            backgroundColor: "grey",
-            position: "absolute",
-            top: "",
-            left: 0,
-            right: 0,
-            bottom: 0,
-            width: "50px",
-            height: "50px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          Button
-        </div>
+        <>
+          <div className="translucent">
+            <div>Anything</div>
+          </div>
+          <svg className="button">
+            <filter id="blur">
+              <feGaussianBlur stdDeviation="5" />
+            </filter>
+          </svg>
+        </>
       );
     else return <Button variant="contained">Hello</Button>;
   };
-  return <div>{typeToReturn()}</div>;
+  return <>{typeToReturn()}</>;
 };
 
 export default memo(ButtonComponent);

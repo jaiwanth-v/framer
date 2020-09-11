@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Image from "./message.png";
+import Image from "./image.jpg";
 import { AppContext } from "../../../Context/App.context";
 interface Props {
   id: any;
@@ -23,6 +23,7 @@ const ImageComponent: React.FC<Props> = ({ id }) => {
   return (
     <div>
       <img
+        style={{ maxWidth: "100%" }}
         className="resizable ui-widget-content"
         src={ImageSrc() || Image}
         alt=""
