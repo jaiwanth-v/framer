@@ -18,12 +18,13 @@ const CheckboxComponent: React.FC<Props> = () => {
         <div>
           <Checkbox
             color="primary"
+            style={{ width: "20px", height: "20px" }}
             onChange={() => setChecked(!checked)}
             checked={checked}
           />
         </div>
       );
-    else return <img src={CheckboxSVG} alt="" />;
+    else return <img src={CheckboxSVG} width="20px" height="20px" alt="" />;
   };
   return typeToShow();
 };

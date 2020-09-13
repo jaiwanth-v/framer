@@ -15,10 +15,10 @@ const RadioComponent: React.FC<Props> = () => {
     if (!edit)
       return (
         <div>
-          <Radio color="primary" />
+          <Radio style={{ width: "20px", height: "20px" }} color="primary" />
         </div>
       );
-    else return <img src={RadioSVG} width="50px" alt="" />;
+    else return <img src={RadioSVG} height="20px" width="20px" alt="" />;
   };
 
   return typeToShow();

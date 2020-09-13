@@ -11,8 +11,15 @@
 }
 
 svg.button {
-  height: 150px;
   width: 150px;
+  height: 40px;
+}
+
+.material-button {
+  border-radius: 20px !important;
+  width: 150px;
+  height: 40px;
+  background: rgba(245, 245, 245, 1) !important;
 }
 
 .translucent div {

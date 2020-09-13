@@ -38,7 +38,13 @@ const ButtonComponent: React.FC<Props> = ({ id }) => {
           </svg>
         </>
       );
-    else return <Button variant="contained"> {val() || "Button"} </Button>;
+    else
+      return (
+        <Button className="material-button" variant="contained">
+          {" "}
+          {val() || "Button"}{" "}
+        </Button>
+      );
   };
   return <>{typeToReturn()}</>;
 };

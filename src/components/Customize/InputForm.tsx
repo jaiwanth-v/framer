@@ -2,33 +2,34 @@ import React, { useContext } from "react";
 import { TextField, Button } from "@material-ui/core";
 import useInput from "../../Hooks/useInput";
 import { AppContext } from "../../Context/App.context";
-import {
-  CHANGE_LINK,
-  CHANGE_LINK_VAL,
-  DELETE_COMPONENT,
-} from "../../Reducer/types";
+import { CHANGE_LABEL, DELETE_COMPONENT } from "../../Reducer/types";
 import CustomForm from "./CustomForm";
 import "./Form.scss";
 
 interface Props {}
+interface ItemType {
+  type: string;
+  id: any;
+  value: string;
+}
 
-const LinkForm: React.FC<Props> = () => {
+const InputForm: React.FC<Props> = () => {
   const { state, dispatch } = useContext(AppContext);
+  const Paragraph = () => {
+    const requiredItem: ItemType = state.items.filter(
+      (item: any) => item.id === state.activeId
+    )[0];
+    return requiredItem.value;
+  };
 
-  const [source, handleSource, resetSource] = useInput("");
-  const [link, handleLink, resetLink] = useInput("");
+  const [source, handleSource, resetSource] = useInput(Paragraph());
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch({
-      type: CHANGE_LINK,
-      payload: { id: state.activeId, href: link },
-    });
-    dispatch({
-      type: CHANGE_LINK_VAL,
+      type: CHANGE_LABEL,
       payload: { id: state.activeId, value: source },
     });
     resetSource();
-    resetLink();
   };
 
   const handleDelete = () => {
@@ -39,26 +40,19 @@ const LinkForm: React.FC<Props> = () => {
     <>
       <CustomForm onSubmit={handleSubmit}>
         <TextField
-          value={link}
-          onChange={handleLink}
-          label="Link"
-          className="form-field animation a3"
-          name=""
-        />
-        <TextField
           value={source}
           onChange={handleSource}
-          label="Text on Link"
+          label="Label"
           className="form-field animation a3"
-          name=""
         />
+
         <Button
           type="submit"
           variant="contained"
           color="primary"
-          className="animation mt-3 a6"
+          className="animation  a6"
         >
-          Change Link
+          Change Label
         </Button>
         <Button
           color="primary"
@@ -72,4 +66,4 @@ const LinkForm: React.FC<Props> = () => {
   );
 };
 
-export default LinkForm;
+export default InputForm;

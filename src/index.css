@@ -14,7 +14,7 @@ code {
     monospace;
 }
 
-.containment-wrapper .draggable {
+.containment-wrapper .draggable-pointer {
   cursor: move;
   cursor: grab;
   cursor: -moz-grab;
@@ -22,7 +22,7 @@ code {
   float: left;
   clear: both;
 }
-.containment-wrapper .draggable:active {
+.containment-wrapper .draggable-pointer:active {
   cursor: grabbing;
   cursor: -moz-grabbing;
   cursor: -webkit-grabbing;

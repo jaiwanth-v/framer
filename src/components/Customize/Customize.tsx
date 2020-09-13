@@ -8,6 +8,7 @@ import TextForm from "./TextForm";
 import ParagraphForm from "./ParagraphForm";
 import LinkForm from "./LinkForm";
 import SelectOptions from "./SelectOptions";
+import InputForm from "./InputForm";
 
 interface Props {
   text?: string;
@@ -39,6 +40,8 @@ const Customize: React.FC<Props> = ({ text }) => {
         return <LinkForm />;
       case "dropdown":
         return <SelectOptions />;
+      case "input":
+        return <InputForm />;
       default:
         return (
           <h4 className="text-center">Click on a component to customize</h4>

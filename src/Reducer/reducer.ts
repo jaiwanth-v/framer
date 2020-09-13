@@ -10,6 +10,7 @@ import {
   CHANGE_TEXT_VAL,
   CHANGE_LINK,
   CHANGE_PARAGRAPH_VAL,
+  CHANGE_LINK_VAL, CHANGE_LABEL
 } from "./types";
 
 interface Action {
@@ -63,7 +64,7 @@ export const reducer = (state = initialState, action: Action) => {
     case DELETE_COMPONENT:
       return {
         ...state,
-        items: state.items.filter((item) => item.id !== payload.id),
+        items: state.items.filter((item) => item.id !== state.activeId),
       };
     case CHANGE_HEADING_VAL:
       let newItemsForHeading = state.items.map((item) =>
@@ -82,10 +83,19 @@ export const reducer = (state = initialState, action: Action) => {
       return { ...state, items: newItemsForParagraph };
     case CHANGE_LINK:
       let newItemsForLink = state.items.map((item) =>
-        item.id === payload.id ? { ...item, value: payload.href } : item
+        item.id === payload.id ? { ...item, href: payload.href } : item
       );
       return { ...state, items: newItemsForLink };
-
+    case CHANGE_LINK_VAL:
+      let newItemsForLinkVal = state.items.map((item) =>
+        item.id === payload.id ? { ...item, value: payload.value } : item
+      );
+      return { ...state, items: newItemsForLinkVal };
+    case CHANGE_LABEL:
+      let newItemsForLabel = state.items.map((item) =>
+        item.id === payload.id ? { ...item, value: payload.value } : item
+      );
+      return { ...state, items: newItemsForLabel };
     default:
       return state;
   }

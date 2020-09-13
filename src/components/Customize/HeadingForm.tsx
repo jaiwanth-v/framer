@@ -2,11 +2,7 @@ import React, { useContext } from "react";
 import { TextField, Button } from "@material-ui/core";
 import useInput from "../../Hooks/useInput";
 import { AppContext } from "../../Context/App.context";
-import {
-  CHANGE_HEADING_VAL,
-  CHANGE_IMAGE_SRC,
-  DELETE_COMPONENT,
-} from "../../Reducer/types";
+import { CHANGE_HEADING_VAL, DELETE_COMPONENT } from "../../Reducer/types";
 import CustomForm from "./CustomForm";
 import "./Form.scss";
 

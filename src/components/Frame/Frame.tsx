@@ -29,7 +29,7 @@ const Frame: React.FC<Props> = () => {
   ) => {
     dispatch({ type: TOGGLE_EDIT, payload: "" });
   };
-  console.log(state);
+
   return (
     <>
       <div className="vh-100 frame-container m-4">
@@ -51,7 +51,10 @@ const Frame: React.FC<Props> = () => {
             <MenuItem value={0}>Preview Mode</MenuItem>
           </Select>
         </FormControl>
-        <div ref={ref} className="frame containment-wrapper">
+        <div
+          ref={ref}
+          className={`frame ${state.edit && "frame-edit"} containment-wrapper`}
+        >
           {state.items.map((v: Item, i: number) => (
             <FrameItem type={v.type} id={v.id} key={i} />
           ))}

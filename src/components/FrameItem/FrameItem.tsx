@@ -21,12 +21,24 @@ interface Props {
 }
 
 const FrameItem: React.FC<Props> = ({ type, id }) => {
-  const { dispatch } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
   useEffect(() => {
-    $(".resizable").resizable({ containment: ".containment-wrapper" });
-    $(".draggable").draggable({
-      containment: ".containment-wrapper",
-    });
+    if (state.edit) {
+      $(".resizable").resizable({
+        disabled: false,
+        containment: ".containment-wrapper",
+      });
+      $(".draggable").draggable({
+        disabled: false,
+        containment: ".containment-wrapper",
+      });
+      console.log("hi");
+    } else {
+      $(".resizable").resizable({ disabled: true });
+      $(".draggable").draggable({
+        disabled: true,
+      });
+    }
   });
   const componentToShow = () => {
     switch (type) {
@@ -61,9 +73,13 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
 
   return (
     <div
-      className="draggable position-absolute"
+      className={`${
+        state.edit && "draggable-pointer"
+      } draggable position-absolute`}
       // style={{ top: `${[50 * (1 + Math.floor(Math.random() * 10))]}px` }}
-      onClick={() => dispatch({ type: SET_CURRENT, payload: id })}
+      onClick={() => {
+        if (state.edit) dispatch({ type: SET_CURRENT, payload: id });
+      }}
     >
       {componentToShow()}
     </div>

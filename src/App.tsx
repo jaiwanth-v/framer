@@ -6,7 +6,7 @@ import { AppProvider } from "./Context/App.context";
 
 const App: React.FC = () => {
   return (
-    <div className="d-flex justify-content-around">
+    <div className="d-flex justify-content-around p-2">
       <AppProvider>
         <Options />
         <Frame />
