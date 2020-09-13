@@ -6,18 +6,30 @@ interface Props {
   id: any;
 }
 
-const ButtonComponent: React.FC<Props> = () => {
+interface ItemType {
+  type: string;
+  id: any;
+  value: string;
+}
+
+const ButtonComponent: React.FC<Props> = ({ id }) => {
   const { state } = useContext(AppContext);
-  console.log(state);
   const typeToReturn = (): React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
   > => {
+    const val = () => {
+      const requiredItem: ItemType = state.items.filter(
+        (item: any) => item.id === id
+      )[0];
+      return requiredItem.value;
+    };
+
     if (state.edit)
       return (
         <>
           <div className="translucent">
-            <div>Anything</div>
+            <div>{val() || "Button"}</div>
           </div>
           <svg className="button">
             <filter id="blur">
@@ -26,7 +38,7 @@ const ButtonComponent: React.FC<Props> = () => {
           </svg>
         </>
       );
-    else return <Button variant="contained">Hello</Button>;
+    else return <Button variant="contained"> {val() || "Button"} </Button>;
   };
   return <>{typeToReturn()}</>;
 };

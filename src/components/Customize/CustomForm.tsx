@@ -4,13 +4,13 @@ interface Props {
   onSubmit: any;
 }
 
-const CustomForm: React.FC<Props> = (props) => {
+const CustomForm: React.FC<Props> = ({ onSubmit, children }) => {
   return (
     <div className="container">
       <div className="left">
         <div className="header">
-          <form onSubmit={props.onSubmit} className="form" method="">
-            {props.children}
+          <form onSubmit={onSubmit} className="form" method="">
+            {children}
           </form>
         </div>
       </div>

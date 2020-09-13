@@ -15,7 +15,17 @@ code {
 }
 
 .containment-wrapper .draggable {
-  cursor: pointer;
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  float: left;
+  clear: both;
+}
+.containment-wrapper .draggable:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
   float: left;
   clear: both;
 }

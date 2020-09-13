@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import { TextField, Button } from "@material-ui/core";
 import useInput from "../../Hooks/useInput";
 import { AppContext } from "../../Context/App.context";
-import { CHANGE_IMAGE_SRC } from "../../Reducer/types";
+import { CHANGE_IMAGE_SRC, DELETE_COMPONENT } from "../../Reducer/types";
 import CustomForm from "./CustomForm";
+import "./Form.scss";
 
 interface Props {}
 
@@ -20,6 +21,10 @@ const ImageForm: React.FC<Props> = () => {
     resetSource();
   };
 
+  const handleDelete = () => {
+    dispatch({ type: DELETE_COMPONENT, payload: { id: state.activeId } });
+  };
+
   return (
     <>
       <CustomForm onSubmit={handleSubmit}>
@@ -34,9 +39,16 @@ const ImageForm: React.FC<Props> = () => {
           type="submit"
           variant="contained"
           color="primary"
-          className="animation mt-5 a6"
+          className="animation mt-3 a6"
         >
           Change URL
+        </Button>
+        <Button
+          color="primary"
+          className="animation mt-3 a6"
+          onClick={handleDelete}
+        >
+          Delete Component
         </Button>
       </CustomForm>
     </>
