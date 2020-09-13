@@ -35,7 +35,13 @@ const InputComponent: React.FC<Props> = ({ id }) => {
           />
         </div>
       );
-    else return <img className="input-edit " src={Image} alt="" />;
+    else
+      return (
+        <div className="input-container">
+          <img className="input-edit" src={Image} alt="" />
+          <div className="centered-placeholder">{label() || "Placeholder"}</div>
+        </div>
+      );
   };
   return typeToShow();
 };
