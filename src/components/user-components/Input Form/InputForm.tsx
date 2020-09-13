@@ -28,11 +28,7 @@ const InputComponent: React.FC<Props> = ({ id }) => {
     if (!edit)
       return (
         <div>
-          <TextField
-            label={`${label() || ""}`}
-            className="input-textfield"
-            // variant=""
-          />
+          <TextField label={`${label() || ""}`} className="input-textfield" />
         </div>
       );
     else

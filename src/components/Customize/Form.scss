@@ -41,16 +41,14 @@
 }
 
 .form-field {
-  height: 46px;
-  padding: 0 16px;
-  border: none;
+  height: auto;
   border-bottom: 2px solid #d2e2ff;
   background: linear-gradient(180deg, white, #fff);
   border-radius: 4px;
   font-family: sans-serif;
   outline: 0;
   transition: 0.2s;
-  margin-top: 20px;
+  margin: 10px 0px !important;
 }
 
 .form-field:focus {
