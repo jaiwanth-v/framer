@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { TextField, Button } from "@material-ui/core";
-import useInput from "../../Hooks/useInput";
-import { AppContext } from "../../Context/App.context";
+import useInput from "../../../Hooks/useInput";
+import { AppContext } from "../../../Context/App.context";
 import {
   CHANGE_LINK,
   CHANGE_LINK_VAL,
   DELETE_COMPONENT,
-} from "../../Reducer/types";
+} from "../../../Reducer/actionTypes";
 import CustomForm from "./CustomForm";
 import "./Form.scss";
 

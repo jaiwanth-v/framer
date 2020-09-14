@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import "./Customize.scss";
 import { AppContext } from "../../Context/App.context";
-import ImageForm from "./ImageForm";
-import ButtonForm from "./ButtonForm";
-import HeadingForm from "./HeadingForm";
-import TextForm from "./TextForm";
-import ParagraphForm from "./ParagraphForm";
-import LinkForm from "./LinkForm";
-import SelectOptions from "./SelectOptions";
-import InputForm from "./InputForm";
+import ImageForm from "./Forms/ImageForm";
+import ButtonForm from "./Forms/ButtonForm";
+import HeadingForm from "./Forms/HeadingForm";
+import TextForm from "./Forms/TextForm";
+import ParagraphForm from "./Forms/ParagraphForm";
+import LinkForm from "./Forms/LinkForm";
+import InputForm from "./Forms/InputForm";
+import DropdownOptions from "./Forms/DropdownOptions";
 
 interface Props {
   text?: string;
@@ -23,7 +23,9 @@ const Customize: React.FC<Props> = ({ text }) => {
     )[0];
 
     if (!requiredItem)
-      return <h4 className="text-center">Click on a component to customize</h4>;
+      return (
+        <h4 className="text-center mt-5">Click on a component to customize</h4>
+      );
 
     switch (requiredItem.type) {
       case "image":
@@ -39,7 +41,7 @@ const Customize: React.FC<Props> = ({ text }) => {
       case "link":
         return <LinkForm />;
       case "dropdown":
-        return <SelectOptions />;
+        return <DropdownOptions />;
       case "input":
         return <InputForm />;
       default:
@@ -50,10 +52,12 @@ const Customize: React.FC<Props> = ({ text }) => {
   };
 
   return (
-    <div className="customize shadow rounded-lg p-4 mt-5">
-      <h3 className="text-center p-2 mb-4">Customize</h3>
-      {optionsToShow()}
-    </div>
+    state.edit && (
+      <div className="customize shadow rounded-lg p-4 mt-5">
+        <h3 className="text-center ">Customize</h3>
+        {optionsToShow()}
+      </div>
+    )
   );
 };
 

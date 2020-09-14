@@ -4,7 +4,12 @@ svg {
 }
 .icons {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 100px 100px;
   row-gap: 20px;
   column-gap: 0.75rem;
+}
+
+.options {
+  width: 250px !important;
+  max-width: 500px;
 }

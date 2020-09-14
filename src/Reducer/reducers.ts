@@ -10,8 +10,10 @@ import {
   CHANGE_TEXT_VAL,
   CHANGE_LINK,
   CHANGE_PARAGRAPH_VAL,
-  CHANGE_LINK_VAL, CHANGE_LABEL
-} from "./types";
+  CHANGE_LINK_VAL,
+  CHANGE_LABEL,
+  CHANGE_DROPDOWN,
+} from "./actionTypes";
 
 interface Action {
   type: string;
@@ -25,6 +27,7 @@ interface Component {
   value?: any;
   href?: any;
   list?: any;
+  options?: Array<string>;
 }
 
 interface AppState {
@@ -96,6 +99,13 @@ export const reducer = (state = initialState, action: Action) => {
         item.id === payload.id ? { ...item, value: payload.value } : item
       );
       return { ...state, items: newItemsForLabel };
+    case CHANGE_DROPDOWN:
+      let newItemsForDropdown = state.items.map((item) =>
+        item.id === payload.id
+          ? { ...item, value: payload.value, options: payload.options }
+          : item
+      );
+      return { ...state, items: newItemsForDropdown };
     default:
       return state;
   }

@@ -27,7 +27,7 @@ const LinkComponent: React.FC<Props> = ({ id }) => {
     if (state.edit)
       return (
         <>
-          <p>{item().value || "Link"}</p>
+          <p style={{ color: "#007bff" }}>{item().value || "Link"}</p>
         </>
       );
     else

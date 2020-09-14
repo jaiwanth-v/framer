@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Checkbox } from "@material-ui/core";
 import { AppContext } from "../../../Context/App.context";
-import CheckboxSVG from "./Checkbox.svg";
+import CheckboxImg from "./Checkbox.jpg";
 
 interface Props {
   id: any;
@@ -24,7 +24,16 @@ const CheckboxComponent: React.FC<Props> = () => {
           />
         </div>
       );
-    else return <img src={CheckboxSVG} width="20px" height="20px" alt="" />;
+    else
+      return (
+        <img
+          src={CheckboxImg}
+          style={{ borderRadius: "2px" }}
+          height="20px"
+          width="20px"
+          alt="Checkbox"
+        />
+      );
   };
   return typeToShow();
 };

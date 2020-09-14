@@ -9,7 +9,7 @@ const HorizontalLine: React.FC<Props> = () => {
     <div>
       <div
         style={{
-          border: "2px solid black",
+          borderTop: "2px solid black",
           width: "500px",
         }}
       ></div>

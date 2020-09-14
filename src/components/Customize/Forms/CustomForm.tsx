@@ -9,7 +9,7 @@ const CustomForm: React.FC<Props> = ({ onSubmit, children }) => {
     <div className="container">
       <div className="left">
         <div className="header">
-          <form onSubmit={onSubmit} className="form" method="">
+          <form onSubmit={onSubmit} className="form">
             {children}
           </form>
         </div>

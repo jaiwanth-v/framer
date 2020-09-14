@@ -1,9 +1,9 @@
 .frame {
-  width: 1000px;
-  height: 1000px;
+  width: 900px;
+  height: 100vh;
 }
 .frame-edit {
-  background: url("./pdfsheet-1.jpg") repeat;
+  background: url("./Background.jpg") repeat;
 }
 .MuiOutlinedInput-input {
   padding: 10px 0 10px 10px !important;
@@ -11,4 +11,37 @@
 
 .form-container {
   width: 15%;
+}
+
+$primary: #464646;
+#generate {
+  font-family: "Roboto", sans-serif;
+}
+
+#generate {
+  outline: none;
+  height: 40px;
+  text-align: center;
+  width: 130px;
+  border-radius: 40px;
+  background: #fff;
+  border: 2px solid $primary;
+  color: $primary;
+  letter-spacing: 1px;
+  text-shadow: 0;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  &:hover {
+    color: white;
+    background: $primary;
+  }
+  &:active {
+    //letter-spacing: 2px;
+    letter-spacing: 2px;
+  }
+  &:after {
+    content: "CREATE PDF";
+  }
 }

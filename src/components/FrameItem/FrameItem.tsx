@@ -14,7 +14,8 @@ import LinkComponent from "../user-components/Link/LinkComponent";
 import $ from "jquery";
 import "jqueryui";
 import { AppContext } from "../../Context/App.context";
-import { SET_CURRENT } from "../../Reducer/types";
+import { SET_CURRENT } from "../../Reducer/actionTypes";
+import { Fade } from "@material-ui/core";
 interface Props {
   type: string;
   id: any;
@@ -32,7 +33,6 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
         disabled: false,
         containment: ".containment-wrapper",
       });
-      console.log("hi");
     } else {
       $(".resizable").resizable({ disabled: true });
       $(".draggable").draggable({
@@ -72,17 +72,21 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
   };
 
   return (
-    <div
-      className={`${
-        state.edit && "draggable-pointer"
-      } draggable position-absolute`}
-      // style={{ top: `${[50 * (1 + Math.floor(Math.random() * 10))]}px` }}
-      onClick={() => {
-        if (state.edit) dispatch({ type: SET_CURRENT, payload: id });
-      }}
-    >
-      {componentToShow()}
-    </div>
+    <>
+      <Fade in={true}>
+        <div
+          className={`${
+            state.edit && "draggable-pointer"
+          } draggable position-absolute`}
+          // style={{ top: `${[50 * (1 + Math.floor(Math.random() * 10))]}px` }}
+          onClick={() => {
+            if (state.edit) dispatch({ type: SET_CURRENT, payload: id });
+          }}
+        >
+          {componentToShow()}
+        </div>
+      </Fade>
+    </>
   );
 };
 

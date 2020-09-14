@@ -14,6 +14,7 @@ interface ItemType {
 const ImageComponent: React.FC<Props> = ({ id }) => {
   const { state } = useContext(AppContext);
   const ImageSrc = () => {
+    console.log("ImageSRC!!");
     const requiredItem: ItemType = state.items.filter(
       (item: any) => item.id === id
     )[0];
@@ -23,7 +24,7 @@ const ImageComponent: React.FC<Props> = ({ id }) => {
   return (
     <div>
       <img
-        style={{ maxWidth: "100%" }}
+        style={{ width: "156px", height: "116px" }}
         className="resizable ui-widget-content"
         src={ImageSrc() || Image}
         alt=""

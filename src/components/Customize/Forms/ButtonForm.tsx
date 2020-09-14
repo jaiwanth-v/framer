@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import CustomForm from "./CustomForm";
 import { TextField, Button } from "@material-ui/core";
-import useInput from "../../Hooks/useInput";
-import { AppContext } from "../../Context/App.context";
-import { CHANGE_BUTTON_VAL } from "../../Reducer/types";
+import useInput from "../../../Hooks/useInput";
+import { AppContext } from "../../../Context/App.context";
+import { CHANGE_BUTTON_VAL } from "../../../Reducer/actionTypes";
 import "./Form.scss";
 
 interface Props {}
