@@ -1,0 +1,19 @@
+.dropdown-edit {
+  width: 200px;
+  height: 55px;
+  border-radius: 5px;
+}
+
+.dropdown-container {
+  position: relative;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.centered-placeholder {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  transform: translate(-40%, -50%);
+  font-size: 18px;
+}

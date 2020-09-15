@@ -1,17 +1,20 @@
 import React from "react";
 import "./Toggle.scss";
-interface Props {}
+interface Props {
+  handleChange: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+}
 
-const Toggler: React.FC<Props> = () => {
+const Toggler: React.FC<Props> = ({ handleChange }) => {
   return (
     <div>
       <div
         className="toggle-container"
-        onClick={() =>
+        onClick={(e) => {
+          handleChange(e);
           document
             .getElementsByClassName("toggle-container")[0]
-            .classList.toggle("toggle-active")
-        }
+            .classList.toggle("toggle-active");
+        }}
       >
         <div className="toggle-fill toggle-fill1">
           <div className="toggle-circle toggle-circle1"></div>

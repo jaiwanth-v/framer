@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { MenuItem, Select } from "@material-ui/core";
 import { AppContext } from "../../../Context/App.context";
 import SVG from "./Dropdown.png";
+import "./Dropdown.scss";
 
 interface Props {
   id: any;
@@ -18,20 +19,20 @@ const DropdownComponent: React.FC<Props> = ({ id }) => {
     state: { edit, items },
   } = useContext(AppContext);
 
-  const [value, setValue] = useState<any>(10);
-  const options: any = (function () {
+  const item: any = (function () {
     const requiredItem: ItemType = items.filter(
       (item: any) => item.id === id
     )[0];
-    return requiredItem.options;
+    return requiredItem;
   })();
-  console.log(options);
+  const { options, value } = item;
+  const [label, setLabel] = useState<any>(value || "");
   const typeToShow = () => {
     if (!edit)
       return (
         <div>
           <Select
-            value={value}
+            value={label}
             variant="outlined"
             style={{ width: "100px", height: "30px" }}
             onChange={(
@@ -39,7 +40,7 @@ const DropdownComponent: React.FC<Props> = ({ id }) => {
                 name?: string | undefined;
                 value: unknown;
               }>
-            ) => setValue(e.target.value)}
+            ) => setLabel(e.target.value)}
           >
             <MenuItem value={options[0]}> {options[0]} </MenuItem>
             <MenuItem value={options[1]}> {options[1]} </MenuItem>
@@ -50,13 +51,17 @@ const DropdownComponent: React.FC<Props> = ({ id }) => {
       );
     else
       return (
-        <img
-          src={SVG}
-          alt="Dropdown"
-          style={{ borderRadius: "4px" }}
-          height="30px"
-          width="100px"
-        />
+        <div className="input-container">
+          <img
+            className="input-edit"
+            height="30px"
+            style={{ borderRadius: "4px" }}
+            width="100px"
+            src={SVG}
+            alt=""
+          />
+          <div className="centered-placeholder">{value || "Placeholder"}</div>
+        </div>
       );
   };
   return typeToShow();

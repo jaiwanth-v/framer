@@ -30,9 +30,8 @@ const Frame: React.FC<Props> = () => {
         <div className="d-flex justify-content-between">
           <div className="d-flex align-items-center">
             <h5 className="mt-1">Edit Mode</h5>
-            <div onClick={handleChange}>
-              <Toggler />
-            </div>
+
+            <Toggler handleChange={handleChange} />
           </div>
           <Pdf targetRef={ref} filename="code-example.pdf">
             {({ toPdf }: any) => (
