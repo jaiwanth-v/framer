@@ -57,9 +57,17 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
       case "heading":
         return <HeadingComponent id={id} />;
       case "hline":
-        return <HorizontalLine id={id} />;
+        return (
+          <div className="mt-4">
+            <HorizontalLine id={id} />
+          </div>
+        );
       case "vline":
-        return <VerticalLine id={id} />;
+        return (
+          <div className="ml-4">
+            <VerticalLine id={id} />
+          </div>
+        );
       case "input":
         return <InputComponent id={id} />;
       case "text":

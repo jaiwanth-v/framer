@@ -9,6 +9,7 @@ import ParagraphForm from "./Forms/ParagraphForm";
 import LinkForm from "./Forms/LinkForm";
 import InputForm from "./Forms/InputForm";
 import DropdownOptions from "./Forms/DropdownOptions";
+import DeleteComponent from "./Forms/DeleteComponent";
 
 interface Props {
   text?: string;
@@ -44,6 +45,13 @@ const Customize: React.FC<Props> = ({ text }) => {
         return <DropdownOptions />;
       case "input":
         return <InputForm />;
+      case "hline":
+      case "vline":
+      case "radio":
+      case "checkbox":
+      case "box":
+      case "arrow":
+        return <DeleteComponent />;
       default:
         return (
           <h4 className="text-center mt-5">

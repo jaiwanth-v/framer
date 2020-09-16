@@ -83,7 +83,7 @@ const DropdownOptions: React.FC<Props> = () => {
           Change Options
         </Button>
         <Button
-          color="primary"
+          color="secondary"
           className="my-1 animation mt-3 a6"
           onClick={handleDelete}
         >

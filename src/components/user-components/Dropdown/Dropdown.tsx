@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { MenuItem, Select } from "@material-ui/core";
 import { AppContext } from "../../../Context/App.context";
-import DropdownImg from "./Dropdown.png";
+import DropdownImg from "./Dropdowns.png";
 import "./Dropdown.scss";
 
 interface Props {

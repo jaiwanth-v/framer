@@ -19,14 +19,15 @@ $value: 0.6;
 }
 
 .edit-mode {
+  transition: all 0.25s ease;
   position: absolute;
-  top: 30px;
+  top: 75px;
   left: 312px;
 }
 
 #generate {
   position: absolute;
-  top: 30px;
+  top: 75px;
   left: 1075px;
 }
 

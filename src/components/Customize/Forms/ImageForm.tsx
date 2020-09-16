@@ -47,7 +47,7 @@ const ImageForm: React.FC<Props> = () => {
           Change URL
         </Button>
         <Button
-          color="primary"
+          color="secondary"
           className="animation mt-3 a6"
           onClick={handleDelete}
         >

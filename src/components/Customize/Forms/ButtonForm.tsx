@@ -44,7 +44,7 @@ const ButtonForm: React.FC<Props> = () => {
         Change Name
       </Button>
       <Button
-        color="primary"
+        color="secondary"
         className="animation mt-3 a6"
         onClick={handleDelete}
       >

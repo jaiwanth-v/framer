@@ -49,7 +49,7 @@ const InputForm: React.FC<Props> = () => {
           Change Label
         </Button>
         <Button
-          color="primary"
+          color="secondary"
           className="animation mt-3 a6"
           onClick={handleDelete}
         >

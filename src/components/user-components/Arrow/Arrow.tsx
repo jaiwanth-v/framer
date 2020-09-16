@@ -41,7 +41,7 @@ const Arrow = () => {
       onClick={handleEnter}
       onBlur={outsideClick}
       tabIndex={1}
-      style={{ position: "sticky" }}
+      style={{ position: "absolute" }}
     >
       <img
         src={ArrowImg}
@@ -64,7 +64,7 @@ const Arrow = () => {
           width={width}
           height={height}
           rotateAngle={rotateAngle}
-          draggable={true}
+          draggable={false}
           zoomable="n, w, s, e"
           rotatable={true}
           onRotate={handleRotate}

@@ -4,11 +4,14 @@ import Frame from "./components/Frame/Frame";
 import Options from "./components/Options/Options";
 import { AppProvider } from "./Context/App.context";
 import "./App.scss";
+import Logo from "./logo.png";
 
 const App: React.FC = () => {
   return (
     <div className="wrapper">
-      <div className="app-content d-flex justify-content-around p-2">
+      <img className="logo" src={Logo} alt="logo" height="50px" />
+      <p className="logo-text">easy prototyping</p>
+      <div className="app-content d-flex justify-content-around p-3">
         <AppProvider>
           <Options />
           <Frame />

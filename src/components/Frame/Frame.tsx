@@ -42,9 +42,7 @@ const Frame: React.FC<Props> = () => {
 
         <div
           ref={ref}
-          className={`frame ${
-            state.edit && "frame-edit"
-          } containment-wrapper mt-5`}
+          className={`frame ${state.edit && "frame-edit"} containment-wrapper`}
         >
           {state.items.map((v: Item, i: number) => (
             <FrameItem type={v.type} id={v.id} key={i} />

@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { TextField } from "@material-ui/core";
 import { AppContext } from "../../../Context/App.context";
 import "./Input.scss";
-import Image from "./Input.png";
 
 interface Props {
   id: any;
@@ -28,13 +27,17 @@ const InputComponent: React.FC<Props> = ({ id }) => {
     if (!edit)
       return (
         <div>
-          <TextField label={`${label() || ""}`} className="input-textfield" />
+          <TextField
+            variant="outlined"
+            placeholder={`${label() || "Placeholder"}`}
+            className="input-textfield"
+          />
         </div>
       );
     else
       return (
         <div className="input-container">
-          <img className="input-edit" src={Image} alt="" />
+          <div className="input-edit" />
           <div className="centered-placeholder">{label() || "Placeholder"}</div>
         </div>
       );

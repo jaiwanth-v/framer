@@ -1,12 +1,13 @@
 .input-textfield {
-  width: 200px;
-  height: 55px;
+  width: 175px;
+  height: 100px !important;
 }
 
 .input-edit {
-  width: 200px;
-  height: 55px;
-  border-radius: 5px;
+  width: 175px;
+  height: 39px;
+  border: 1.75px solid rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
 }
 
 .input-container {
@@ -17,8 +18,8 @@
 
 .centered-placeholder {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: 30%;
+  top: 45%;
   transform: translate(-50%, -50%);
-  font-size: 18px;
+  font-size: 17px;
 }

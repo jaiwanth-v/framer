@@ -61,7 +61,7 @@ const LinkForm: React.FC<Props> = () => {
           Change Link
         </Button>
         <Button
-          color="primary"
+          color="secondary"
           className="animation mt-3 a6"
           onClick={handleDelete}
         >

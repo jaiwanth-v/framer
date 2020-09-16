@@ -63,7 +63,7 @@ const ParagraphForm: React.FC<Props> = () => {
           Change Paragraph
         </Button>
         <Button
-          color="primary"
+          color="secondary"
           className="animation mt-3 a6"
           onClick={handleDelete}
         >

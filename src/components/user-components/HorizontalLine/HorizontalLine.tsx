@@ -8,6 +8,7 @@ const HorizontalLine: React.FC<Props> = () => {
   return (
     <div>
       <div
+        className="resizable"
         style={{
           borderTop: "2px solid black",
           width: "500px",
