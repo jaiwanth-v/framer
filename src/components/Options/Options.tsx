@@ -8,7 +8,7 @@ const Options: React.FC<Props> = () => {
   const { state, dispatch } = useContext(AppContext);
   return (
     state.edit && (
-      <div className="options w-100 shadow rounded-lg h-75 p-4 mt-5">
+      <div className="options shadow rounded-lg h-75 p-4 mt-5">
         <h3 className="text-center p-2 mb-4">Options</h3>
         <div className="icons">
           <div className="d-flex flex-column text-center">
@@ -168,7 +168,7 @@ const Options: React.FC<Props> = () => {
               }}
               className="fas rotate-45 fa-long-arrow-alt-up fa-2x"
             ></i>
-            <small>Arrow</small>
+            <small>Arrow (Beta) </small>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-
-import ResizableRect from "./RotationHelper";
+import React, { useContext, useState } from "react";
+import ArrowImg from "./arrow.png";
+import ResizableRect from "../RotationHelper";
+import { AppContext } from "../../../Context/App.context";
 
 interface styles {
   left: number;
@@ -10,7 +11,10 @@ interface styles {
 }
 
 const Arrow = () => {
-  const [width, setWidth] = useState(250);
+  const {
+    state: { edit },
+  } = useContext(AppContext);
+  const [width, setWidth] = useState(130);
   const [height, setHeight] = useState(100);
   const [top, setTop] = useState(10);
   const [left, setLeft] = useState(10);
@@ -30,14 +34,17 @@ const Arrow = () => {
     setLeft(left + deltaX);
     setTop(top + deltaY);
   };
-
   const handleEnter = () => setChecked(true);
   const outsideClick = () => setChecked(false);
-
   return (
-    <div onClick={handleEnter} style={{ position: "absolute" }}>
+    <div
+      onClick={handleEnter}
+      onBlur={outsideClick}
+      tabIndex={1}
+      style={{ position: "sticky" }}
+    >
       <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Arrow_west.svg/1024px-Arrow_west.svg.png"
+        src={ArrowImg}
         style={{
           position: "absolute",
           top,
@@ -50,7 +57,7 @@ const Arrow = () => {
         height={height}
         alt=""
       />
-      {checked && (
+      {checked && edit && (
         <ResizableRect
           left={left}
           top={top}

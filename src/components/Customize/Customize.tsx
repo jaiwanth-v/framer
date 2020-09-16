@@ -46,7 +46,9 @@ const Customize: React.FC<Props> = ({ text }) => {
         return <InputForm />;
       default:
         return (
-          <h4 className="text-center">Click on a component to customize</h4>
+          <h4 className="text-center mt-5">
+            Click on a component to customize
+          </h4>
         );
     }
   };

@@ -17,6 +17,7 @@ import { AppContext } from "../../../Context/App.context";
 import { SET_CURRENT } from "../../../Reducer/actionTypes";
 import { Fade } from "@material-ui/core";
 import Arrow from "../../user-components/Arrow/Arrow";
+import Box from "../../user-components/Box/Box";
 interface Props {
   type: string;
   id: any;
@@ -69,6 +70,8 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
         return <LinkComponent id={id} />;
       case "arrow":
         return <Arrow />;
+      case "box":
+        return <Box />;
       default:
         break;
     }
