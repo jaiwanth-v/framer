@@ -20,10 +20,13 @@ const TextComponent: React.FC<Props> = ({ id }) => {
     return requiredItem.value;
   };
   return (
-    <div>
-      <p style={{ maxWidth: "600px", width: "500px" }}>
+    <div className="">
+      <p
+        className="resizable"
+        style={{ maxWidth: "1000px", width: "500px", maxHeight: "1000px" }}
+      >
         {paragraph() ||
-          "A vigilante is just a man lost in scramble for his own gratification. He can be destroyed or locked up. But if you make yourself more than just a man, if you devote yourself to an ideal and if they can’t stop you then you become something else entirely. Legend, Mr Wayne."}
+          "Sometimes I'll start a sentence and I don't even know where it's going. I just hope I find it along the way."}
       </p>
     </div>
   );

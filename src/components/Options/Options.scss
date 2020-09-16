@@ -4,12 +4,19 @@ svg {
 }
 .icons {
   display: grid;
-  grid-template-columns: 100px 100px;
+  grid-template-columns: 90px 90px;
   row-gap: 20px;
-  column-gap: 0.75rem;
+  column-gap: 20px;
 }
 
 .options {
   width: 250px !important;
-  max-width: 500px;
+  height: 600px !important;
+  border-radius: 30px !important;
+}
+
+.rotate-45 {
+  display: inline-block;
+  -webkit-transform: rotate(60deg);
+  transform: rotate(60deg);
 }

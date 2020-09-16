@@ -3,7 +3,7 @@ import "./Frame.scss";
 import { AppContext } from "../../Context/App.context";
 import { TOGGLE_EDIT } from "../../Reducer/actionTypes";
 import { v4 as uuid } from "uuid";
-import FrameItem from "../FrameItem/FrameItem";
+import FrameItem from "./FrameItem/FrameItem";
 import Pdf from "react-to-pdf";
 import Toggler from "./Toggler";
 
@@ -28,7 +28,7 @@ const Frame: React.FC<Props> = () => {
     <>
       <div className="vh-100 frame-container m-4">
         <div className="d-flex justify-content-between">
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center edit-mode">
             <h5 className="mt-1">Edit Mode</h5>
 
             <Toggler handleChange={handleChange} />
@@ -42,7 +42,9 @@ const Frame: React.FC<Props> = () => {
 
         <div
           ref={ref}
-          className={`frame ${state.edit && "frame-edit"} containment-wrapper`}
+          className={`frame ${
+            state.edit && "frame-edit"
+          } containment-wrapper mt-5`}
         >
           {state.items.map((v: Item, i: number) => (
             <FrameItem type={v.type} id={v.id} key={i} />

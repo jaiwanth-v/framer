@@ -21,7 +21,7 @@ const TextComponent: React.FC<Props> = ({ id }) => {
   };
   return (
     <div>
-      <span>{text() || "This is a sample text"}</span>
+      <span>{text() || "Just a random text"}</span>
     </div>
   );
 };

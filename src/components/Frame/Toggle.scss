@@ -17,6 +17,19 @@ $value: 0.6;
 .toggle-container:active {
   transform: scale(0.73);
 }
+
+.edit-mode {
+  position: absolute;
+  top: 30px;
+  left: 312px;
+}
+
+#generate {
+  position: absolute;
+  top: 30px;
+  left: 1075px;
+}
+
 .toggle-fill {
   background-color: #000;
   height: 100%;

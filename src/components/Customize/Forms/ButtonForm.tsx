@@ -3,7 +3,10 @@ import CustomForm from "./CustomForm";
 import { TextField, Button } from "@material-ui/core";
 import useInput from "../../../Hooks/useInput";
 import { AppContext } from "../../../Context/App.context";
-import { CHANGE_BUTTON_VAL } from "../../../Reducer/actionTypes";
+import {
+  CHANGE_BUTTON_VAL,
+  DELETE_COMPONENT,
+} from "../../../Reducer/actionTypes";
 import "./Form.scss";
 
 interface Props {}
@@ -19,6 +22,10 @@ const ButtonForm: React.FC<Props> = () => {
     });
     resetSource();
   };
+  const handleDelete = () => {
+    dispatch({ type: DELETE_COMPONENT, payload: { id: state.activeId } });
+  };
+
   return (
     <CustomForm onSubmit={handleSubmit}>
       <TextField
@@ -35,6 +42,13 @@ const ButtonForm: React.FC<Props> = () => {
         className="animation mt-3 a6"
       >
         Change Name
+      </Button>
+      <Button
+        color="primary"
+        className="animation mt-3 a6"
+        onClick={handleDelete}
+      >
+        Delete Component
       </Button>
     </CustomForm>
   );

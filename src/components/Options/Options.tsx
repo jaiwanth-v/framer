@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import "./Options.scss";
 import { AppContext } from "../../Context/App.context";
 import { ADD_ITEM } from "../../Reducer/actionTypes";
-
 interface Props {}
 
 const Options: React.FC<Props> = () => {
@@ -14,10 +13,7 @@ const Options: React.FC<Props> = () => {
         <div className="icons">
           <div className="d-flex flex-column text-center">
             <i
-              onClick={() => {
-                console.log("image");
-                dispatch({ type: ADD_ITEM, payload: "image" });
-              }}
+              onClick={() => dispatch({ type: ADD_ITEM, payload: "image" })}
               className="fas fa-images fa-2x"
             ></i>
             <small>Image</small>
@@ -155,6 +151,24 @@ const Options: React.FC<Props> = () => {
               className="fas fa-dot-circle fa-2x"
             ></i>
             <small>Radio Input</small>
+          </div>
+          <div className="d-flex flex-column text-center">
+            <i
+              onClick={() => {
+                dispatch({ type: ADD_ITEM, payload: "box" });
+              }}
+              className="fa fa-square-o fa-2x"
+            ></i>
+            <small>Box</small>
+          </div>
+          <div className="d-flex flex-column text-center">
+            <i
+              onClick={() => {
+                dispatch({ type: ADD_ITEM, payload: "arrow" });
+              }}
+              className="fas rotate-45 fa-long-arrow-alt-up fa-2x"
+            ></i>
+            <small>Arrow</small>
           </div>
         </div>
       </div>

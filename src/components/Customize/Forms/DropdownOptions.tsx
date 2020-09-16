@@ -46,7 +46,7 @@ const DropdownOptions: React.FC<Props> = () => {
         <TextField
           value={value}
           onChange={handleValue}
-          label="Link"
+          label="Default Value"
           className="animation a3"
           name=""
         />
@@ -55,28 +55,24 @@ const DropdownOptions: React.FC<Props> = () => {
           onChange={handleOption0}
           label="Option 1"
           className="my-1 animation a3"
-          name=""
         />
         <TextField
           value={option1}
           onChange={handleOption1}
           label="Option 2"
           className="my-1 animation a3"
-          name=""
         />
         <TextField
           value={option2}
           onChange={handleOption2}
           label="Option 3"
           className="my-1 animation a3"
-          name=""
         />
         <TextField
           value={option3}
           onChange={handleOption3}
           label="Option 4"
           className="my-1 animation a3"
-          name=""
         />
         <Button
           type="submit"

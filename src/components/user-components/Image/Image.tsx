@@ -14,7 +14,6 @@ interface ItemType {
 const ImageComponent: React.FC<Props> = ({ id }) => {
   const { state } = useContext(AppContext);
   const ImageSrc = () => {
-    console.log("ImageSRC!!");
     const requiredItem: ItemType = state.items.filter(
       (item: any) => item.id === id
     )[0];

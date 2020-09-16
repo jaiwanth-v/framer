@@ -22,6 +22,7 @@
     "react-scripts": "3.4.3",
     "react-to-pdf": "^0.0.13",
     "typescript": "~3.7.2",
+    "jqueryui": "^1.11.1",
     "uuid": "^8.3.0"
   },
   "scripts": {
@@ -45,7 +46,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "jqueryui": "^1.11.1"
-  }
+  "devDependencies": {}
 }

@@ -102,7 +102,11 @@ export const reducer = (state = initialState, action: Action) => {
     case CHANGE_DROPDOWN:
       let newItemsForDropdown = state.items.map((item) =>
         item.id === payload.id
-          ? { ...item, value: payload.value, options: payload.options }
+          ? {
+              ...item,
+              value: payload.value,
+              options: payload.options,
+            }
           : item
       );
       return { ...state, items: newItemsForDropdown };

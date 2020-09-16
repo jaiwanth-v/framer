@@ -1,21 +1,22 @@
 import React, { useEffect, useContext, memo } from "react";
-import ButtonComponent from "../user-components/Button/Button";
-import CheckboxComponent from "../user-components/CheckBox/Checkbox";
-import DropdownComponent from "../user-components/Dropdown/Dropdown";
-import ImageComponent from "../user-components/Image/Image";
-import RadioComponent from "../user-components/RadioInput/RadioComponent";
-import HeadingComponent from "../user-components/Heading/Heading";
-import HorizontalLine from "../user-components/HorizontalLine/HorizontalLine";
-import VerticalLine from "../user-components/VerticalLine/VerticalLine";
-import InputComponent from "../user-components/Input Form/InputForm";
-import TextComponent from "../user-components/Text/TextComponent";
-import ParagraphComponent from "../user-components/Paragraph/ParagraphComponent";
-import LinkComponent from "../user-components/Link/LinkComponent";
+import ButtonComponent from "../../user-components/Button/Button";
+import CheckboxComponent from "../../user-components/CheckBox/Checkbox";
+import DropdownComponent from "../../user-components/Dropdown/Dropdown";
+import ImageComponent from "../../user-components/Image/Image";
+import RadioComponent from "../../user-components/RadioInput/RadioComponent";
+import HeadingComponent from "../../user-components/Heading/Heading";
+import HorizontalLine from "../../user-components/HorizontalLine/HorizontalLine";
+import VerticalLine from "../../user-components/VerticalLine/VerticalLine";
+import InputComponent from "../../user-components/Input Form/InputForm";
+import TextComponent from "../../user-components/Text/TextComponent";
+import ParagraphComponent from "../../user-components/Paragraph/ParagraphComponent";
+import LinkComponent from "../../user-components/Link/LinkComponent";
 import $ from "jquery";
 import "jqueryui";
-import { AppContext } from "../../Context/App.context";
-import { SET_CURRENT } from "../../Reducer/actionTypes";
+import { AppContext } from "../../../Context/App.context";
+import { SET_CURRENT } from "../../../Reducer/actionTypes";
 import { Fade } from "@material-ui/core";
+import Arrow from "../../user-components/Arrow/Arrow";
 interface Props {
   type: string;
   id: any;
@@ -66,6 +67,8 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
         return <ParagraphComponent id={id} />;
       case "link":
         return <LinkComponent id={id} />;
+      case "arrow":
+        return <Arrow />;
       default:
         break;
     }
@@ -75,9 +78,9 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
     <>
       <Fade in={true}>
         <div
-          className={`${
-            state.edit && "draggable-pointer"
-          } draggable position-absolute`}
+          className={`${state.edit && "draggable-pointer"} ${
+            type !== "arrow" && "draggable"
+          } position-absolute`}
           // style={{ top: `${[50 * (1 + Math.floor(Math.random() * 10))]}px` }}
           onClick={() => {
             if (state.edit) dispatch({ type: SET_CURRENT, payload: id });
