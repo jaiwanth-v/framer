@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { InputLabel, MenuItem, Select } from "@material-ui/core";
+import { MenuItem, Select } from "@material-ui/core";
 import { AppContext } from "../../../Context/App.context";
 import DropdownImg from "./Dropdown.png";
 import "./Dropdown.scss";
