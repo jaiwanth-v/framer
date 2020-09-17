@@ -17,7 +17,10 @@ svg.button {
 
 .material-button {
   border-radius: 20px !important;
+  font-family: unset;
   width: 150px;
+  font-size: 22px !important;
+  text-transform: unset !important;
   height: 40px;
   background: rgba(245, 245, 245, 1) !important;
 }

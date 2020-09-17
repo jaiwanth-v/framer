@@ -35,7 +35,9 @@ const Frame: React.FC<Props> = () => {
           </div>
           <Pdf targetRef={ref} filename="code-example.pdf">
             {({ toPdf }: any) => (
-              <button id="generate" onClick={toPdf}></button>
+              <button id="generate" onClick={toPdf}>
+                CREATE PDF
+              </button>
             )}
           </Pdf>
         </div>

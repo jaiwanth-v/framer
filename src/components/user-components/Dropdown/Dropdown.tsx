@@ -26,10 +26,10 @@ const DropdownComponent: React.FC<Props> = ({ id }) => {
     )[0];
     return requiredItem;
   })();
-  const { options, value } = item;
-  const [label, setLabel] = useState<any>(value || 0);
+  var { options, value } = item;
+  // eslint-disable-next-line no-redeclare
+  var [value, setValue] = useState<string>(value || "Placeholder");
   const typeToShow = () => {
-    console.log(label);
     if (!edit)
       return (
         <div>
@@ -37,24 +37,24 @@ const DropdownComponent: React.FC<Props> = ({ id }) => {
             options.length && (
               <>
                 <Select
-                  value={label}
+                  value={value || "Placeholder"}
                   variant="outlined"
                   className="select-dropdown"
                   onChange={(
                     e: React.ChangeEvent<{
                       name?: string | undefined;
-                      value: unknown;
+                      value: any;
                     }>
-                  ) => setLabel(e.target.value)}
+                  ) => setValue(e.target.value)}
                 >
-                  <MenuItem value={label} disabled>
-                    {" "}
-                    {label}{" "}
+                  <MenuItem value={value || "Placeholder"} disabled>
+                    {value || "Placeholder"}
                   </MenuItem>
-                  <MenuItem value={options[0]}> {options[0]} </MenuItem>
-                  <MenuItem value={options[1]}> {options[1]} </MenuItem>
-                  <MenuItem value={options[2]}> {options[2]} </MenuItem>
-                  <MenuItem value={options[3]}> {options[3]} </MenuItem>
+                  {options.map((option) =>
+                    option !== "" ? (
+                      <MenuItem value={option}> {option} </MenuItem>
+                    ) : null
+                  )}
                 </Select>
               </>
             )
@@ -62,9 +62,9 @@ const DropdownComponent: React.FC<Props> = ({ id }) => {
             <Select
               variant="outlined"
               className="select-dropdown"
-              value={label}
+              value={value || "Placeholder"}
             >
-              <MenuItem value={label} disabled>
+              <MenuItem value={value || "Placeholder"} disabled>
                 Placeholder
               </MenuItem>
             </Select>
@@ -73,9 +73,9 @@ const DropdownComponent: React.FC<Props> = ({ id }) => {
       );
     else
       return (
-        <div className="input-container">
+        <div className="dropdown-container">
           <img
-            className="input-edit"
+            className="dropdown-edit"
             height="30px"
             style={{ borderRadius: "4px" }}
             width="100px"

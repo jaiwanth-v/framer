@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import useInput from "../../../Hooks/useInput";
 import { AppContext } from "../../../Context/App.context";
 import {
@@ -46,9 +46,8 @@ const DropdownOptions: React.FC<Props> = () => {
         <TextField
           value={value}
           onChange={handleValue}
-          label="Default Value"
+          label="Placeholder"
           className="animation a3"
-          name=""
         />
         <TextField
           value={option0}
@@ -74,21 +73,16 @@ const DropdownOptions: React.FC<Props> = () => {
           label="Option 4"
           className="my-1 animation a3"
         />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          className="my-1 animation mt-3 a6"
-        >
+        <button id="generate1" type="submit" className="animation mt-4 ml-2 a6">
           Change Options
-        </Button>
-        <Button
-          color="secondary"
-          className="my-1 animation mt-3 a6"
+        </button>
+        <button
+          id="generate-danger"
+          className="animation ml-2  mt-3 a6"
           onClick={handleDelete}
         >
-          Delete Component
-        </Button>
+          Delete
+        </button>
       </CustomForm>
     </>
   );

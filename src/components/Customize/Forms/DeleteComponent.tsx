@@ -1,4 +1,3 @@
-import { Button } from "@material-ui/core";
 import React, { useContext } from "react";
 import { AppContext } from "../../../Context/App.context";
 import { DELETE_COMPONENT } from "../../../Reducer/actionTypes";
@@ -13,13 +12,14 @@ const DeleteComponent: React.FC<Props> = () => {
 
   return (
     <div>
-      <Button
-        color="secondary"
-        className="animation mt-3 ml-3 a6"
+      <button
+        id="generate-danger"
+        style={{ marginLeft: "27px" }}
+        className="animation mt-4 a6"
         onClick={handleDelete}
       >
-        Delete Component
-      </Button>
+        Delete
+      </button>
     </div>
   );
 };

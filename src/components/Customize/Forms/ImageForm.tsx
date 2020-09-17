@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import useInput from "../../../Hooks/useInput";
 import { AppContext } from "../../../Context/App.context";
 import {
@@ -38,21 +38,16 @@ const ImageForm: React.FC<Props> = () => {
           className="form-field animation a3"
           name=""
         />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          className="animation mt-3 a6"
-        >
+        <button id="generate1" type="submit" className="animation ml-2 mt-3 a6">
           Change URL
-        </Button>
-        <Button
-          color="secondary"
-          className="animation mt-3 a6"
+        </button>
+        <button
+          id="generate-danger"
+          className="animation ml-2 mt-3 a6"
           onClick={handleDelete}
         >
-          Delete Component
-        </Button>
+          Delete
+        </button>
       </CustomForm>
     </>
   );
