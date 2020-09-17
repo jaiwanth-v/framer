@@ -8,7 +8,13 @@ interface Props {
 
 const ColorPicker: React.FC<Props> = ({ brushColor, handleColorChange }) => {
   return (
-    <CirclePicker color={brushColor} onChangeComplete={handleColorChange} />
+    <div className="picker">
+      <CirclePicker
+        width="150px"
+        color={brushColor}
+        onChangeComplete={handleColorChange}
+      />
+    </div>
   );
 };
 export default ColorPicker;

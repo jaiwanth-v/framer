@@ -10,6 +10,7 @@ import LinkForm from "./Forms/LinkForm";
 import InputForm from "./Forms/InputForm";
 import DropdownOptions from "./Forms/DropdownOptions";
 import DeleteComponent from "./Forms/DeleteComponent";
+import { Fade } from "@material-ui/core";
 
 interface Props {
   text?: string;
@@ -25,7 +26,11 @@ const Customize: React.FC<Props> = ({ text }) => {
 
     if (!requiredItem)
       return (
-        <h4 className="text-center mt-5">Click on a component to customize</h4>
+        <Fade in={state.activeId !== "canvas"}>
+          <h4 className="text-center mt-5">
+            Click on a component to customize
+          </h4>
+        </Fade>
       );
 
     switch (requiredItem.type) {
@@ -54,9 +59,11 @@ const Customize: React.FC<Props> = ({ text }) => {
         return <DeleteComponent />;
       default:
         return (
-          <h4 className="text-center mt-5">
-            Click on a component to customize
-          </h4>
+          <Fade in={state.activeId !== "canvas"}>
+            <h4 className="text-center mt-5">
+              Click on a component to customize
+            </h4>
+          </Fade>
         );
     }
   };

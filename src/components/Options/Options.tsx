@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./Options.scss";
 import { AppContext } from "../../Context/App.context";
-import { ADD_ITEM } from "../../Reducer/actionTypes";
+import { ADD_ITEM, SET_CURRENT } from "../../Reducer/actionTypes";
 interface Props {}
 
 const Options: React.FC<Props> = () => {
@@ -11,14 +11,20 @@ const Options: React.FC<Props> = () => {
       <div className="options shadow rounded-lg h-75 p-4 mt-5">
         <h3 className="text-center p-2 mb-4">Options</h3>
         <div className="icons">
-          <div className="d-flex flex-column text-center">
+          <div
+            onClick={() => dispatch({ type: SET_CURRENT, payload: null })}
+            className="d-flex flex-column text-center"
+          >
             <i
               onClick={() => dispatch({ type: ADD_ITEM, payload: "image" })}
               className="fas fa-images fa-2x"
             ></i>
             <small>Image</small>
           </div>
-          <div className="d-flex flex-column text-center">
+          <div
+            onClick={() => dispatch({ type: SET_CURRENT, payload: null })}
+            className="d-flex flex-column text-center"
+          >
             <i
               onClick={() => {
                 dispatch({ type: ADD_ITEM, payload: "text" });
@@ -27,7 +33,10 @@ const Options: React.FC<Props> = () => {
             ></i>
             <small>Text</small>
           </div>
-          <div className="d-flex flex-column text-center">
+          <div
+            onClick={() => dispatch({ type: SET_CURRENT, payload: null })}
+            className="d-flex flex-column text-center"
+          >
             <i
               onClick={() => {
                 dispatch({ type: ADD_ITEM, payload: "paragraph" });
@@ -36,7 +45,10 @@ const Options: React.FC<Props> = () => {
             ></i>
             <small>Paragraph</small>
           </div>
-          <div className="d-flex flex-column text-center">
+          <div
+            onClick={() => dispatch({ type: SET_CURRENT, payload: null })}
+            className="d-flex flex-column text-center"
+          >
             <i
               onClick={() => {
                 dispatch({ type: ADD_ITEM, payload: "link" });
@@ -45,7 +57,10 @@ const Options: React.FC<Props> = () => {
             ></i>
             <small>Link</small>
           </div>
-          <div className="d-flex flex-column text-center">
+          <div
+            onClick={() => dispatch({ type: SET_CURRENT, payload: null })}
+            className="d-flex flex-column text-center"
+          >
             <i
               onClick={() => {
                 dispatch({ type: ADD_ITEM, payload: "heading" });
@@ -54,7 +69,10 @@ const Options: React.FC<Props> = () => {
             ></i>
             <small>Heading</small>
           </div>
-          <div className="d-flex flex-column align-items-center">
+          <div
+            onClick={() => dispatch({ type: SET_CURRENT, payload: null })}
+            className="d-flex flex-column align-items-center"
+          >
             <svg
               onClick={() => {
                 dispatch({ type: ADD_ITEM, payload: "button" });
@@ -73,7 +91,10 @@ const Options: React.FC<Props> = () => {
             </svg>
             <small>Button</small>
           </div>
-          <div className="d-flex flex-column text-center">
+          <div
+            onClick={() => dispatch({ type: SET_CURRENT, payload: null })}
+            className="d-flex flex-column text-center"
+          >
             <i
               onClick={() => {
                 dispatch({ type: ADD_ITEM, payload: "checkbox" });
@@ -82,7 +103,10 @@ const Options: React.FC<Props> = () => {
             ></i>
             <small>Checkbox</small>
           </div>
-          <div className="d-flex flex-column align-items-center">
+          <div
+            onClick={() => dispatch({ type: SET_CURRENT, payload: null })}
+            className="d-flex flex-column align-items-center"
+          >
             <svg
               onClick={() => {
                 dispatch({ type: ADD_ITEM, payload: "input" });
@@ -102,7 +126,10 @@ const Options: React.FC<Props> = () => {
             </svg>
             <small>Input Form</small>
           </div>
-          <div className="d-flex flex-column align-items-center">
+          <div
+            onClick={() => dispatch({ type: SET_CURRENT, payload: null })}
+            className="d-flex flex-column align-items-center"
+          >
             <svg
               onClick={() => {
                 dispatch({ type: ADD_ITEM, payload: "dropdown" });
@@ -125,7 +152,10 @@ const Options: React.FC<Props> = () => {
             </svg>
             <small>Dropdown</small>
           </div>
-          <div className="d-flex flex-column text-center">
+          <div
+            onClick={() => dispatch({ type: SET_CURRENT, payload: null })}
+            className="d-flex flex-column text-center"
+          >
             <i
               onClick={() => {
                 dispatch({ type: ADD_ITEM, payload: "radio" });
@@ -137,22 +167,28 @@ const Options: React.FC<Props> = () => {
           <div className="d-flex flex-column text-center">
             <i
               onClick={() => {
-                dispatch({ type: ADD_ITEM, payload: "hline" });
+                dispatch({ type: SET_CURRENT, payload: "canvas" });
               }}
-              className="fas fa-grip-lines fa-2x"
+              className="fas fa-pen fa-2x"
             ></i>
-            <small>Horizontal Line</small>
+            <small>Draw</small>
           </div>
-          <div className="d-flex flex-column text-center">
+          <div
+            onClick={() => dispatch({ type: SET_CURRENT, payload: null })}
+            className="d-flex flex-column text-center"
+          >
             <i
               onClick={() => {
-                dispatch({ type: ADD_ITEM, payload: "vline" });
+                dispatch({ type: ADD_ITEM, payload: "line" });
               }}
               className="fas fa-grip-lines-vertical fa-2x"
             ></i>
-            <small>Vertical line</small>
+            <small>Line</small>
           </div>
-          <div className="d-flex flex-column text-center">
+          <div
+            onClick={() => dispatch({ type: SET_CURRENT, payload: null })}
+            className="d-flex flex-column text-center"
+          >
             <i
               onClick={() => {
                 dispatch({ type: ADD_ITEM, payload: "box" });
@@ -161,7 +197,10 @@ const Options: React.FC<Props> = () => {
             ></i>
             <small>Box</small>
           </div>
-          <div className="d-flex flex-column text-center">
+          <div
+            onClick={() => dispatch({ type: SET_CURRENT, payload: null })}
+            className="d-flex flex-column text-center"
+          >
             <i
               onClick={() => {
                 dispatch({ type: ADD_ITEM, payload: "arrow" });

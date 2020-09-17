@@ -103,7 +103,8 @@ $third: $primary;
     //letter-spacing: 2px;
     letter-spacing: 2px;
   }
-  // &:after {
-  //   content: "CREATE PDF";
-  // }
+}
+
+.frame-item {
+  z-index: 60;
 }

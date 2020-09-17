@@ -6,7 +6,7 @@ import { v4 as uuid } from "uuid";
 import FrameItem from "./FrameItem/FrameItem";
 import Pdf from "react-to-pdf";
 import Toggler from "./Toggler";
-// import Canvas from "./Canvas/Canvas";
+import Canvas from "./Canvas/Canvas";
 
 const ref: React.RefObject<HTMLDivElement> | null | undefined = createRef();
 
@@ -31,7 +31,6 @@ const Frame: React.FC<Props> = () => {
         <div className="d-flex justify-content-between">
           <div className="d-flex align-items-center edit-mode">
             <h5 className="mt-1">Edit Mode</h5>
-            {/* <Canvas /> */}
             <Toggler handleChange={handleChange} />
           </div>
           <Pdf targetRef={ref} filename="code-example.pdf">
@@ -47,6 +46,7 @@ const Frame: React.FC<Props> = () => {
           ref={ref}
           className={`frame ${state.edit && "frame-edit"} containment-wrapper`}
         >
+          {<Canvas />}
           {state.items.map((v: Item, i: number) => (
             <FrameItem type={v.type} id={v.id} key={i} />
           ))}

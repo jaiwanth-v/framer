@@ -1,8 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import CanvasDraw from "react-canvas-draw";
 import ColorPicker from "./ColorPicker";
 import CanvasTools from "./CanvasTools";
 import "./Canvas.scss";
+import { AppContext } from "../../../Context/App.context";
+import { Fade } from "@material-ui/core";
 
 const Canvas = () => {
   const [brushColor, setBrusholor] = useState("#444");
@@ -25,30 +27,40 @@ const Canvas = () => {
     },
     [lastPenColor]
   );
+
+  const { state } = useContext(AppContext);
+
   return (
     <div className="Canvas">
       <div className="container">
         <div>
-          <div>
-            <ColorPicker
-              brushColor={brushColor}
-              handleColorChange={handleColorChange}
-            />
-          </div>
           <div className="canvas-container">
             <CanvasDraw
+              disabled={!(state.edit && state.activeId === "canvas")}
+              canvasHeight="1000px"
+              canvasWidth="900px"
               ref={canvasRef}
+              backgroundColor="rgba(0,0,0,0)"
+              hideGrid
               brushColor={brushColor}
               brushRadius={brushRadius}
               lazyRadius={5}
             />
           </div>
-          <CanvasTools
-            setBrushRadius={setBrushRadius}
-            handleToolChange={toolChange}
-            canvasRef={canvasRef}
-            brushRadius={brushRadius}
-          />
+          <Fade in={state.edit && state.activeId === "canvas"}>
+            <div className="tools-container">
+              <ColorPicker
+                brushColor={brushColor}
+                handleColorChange={handleColorChange}
+              />
+              <CanvasTools
+                setBrushRadius={setBrushRadius}
+                handleToolChange={toolChange}
+                canvasRef={canvasRef}
+                brushRadius={brushRadius}
+              />
+            </div>
+          </Fade>
         </div>
       </div>
     </div>

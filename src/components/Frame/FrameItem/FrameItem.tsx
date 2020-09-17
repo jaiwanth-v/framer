@@ -5,8 +5,7 @@ import DropdownComponent from "../../user-components/Dropdown/Dropdown";
 import ImageComponent from "../../user-components/Image/Image";
 import RadioComponent from "../../user-components/RadioInput/RadioComponent";
 import HeadingComponent from "../../user-components/Heading/Heading";
-import HorizontalLine from "../../user-components/HorizontalLine/HorizontalLine";
-import VerticalLine from "../../user-components/VerticalLine/VerticalLine";
+import Line from "../../user-components/Line/Line";
 import InputComponent from "../../user-components/Input Form/InputForm";
 import TextComponent from "../../user-components/Text/TextComponent";
 import ParagraphComponent from "../../user-components/Paragraph/ParagraphComponent";
@@ -56,16 +55,11 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
         return <RadioComponent id={id} />;
       case "heading":
         return <HeadingComponent id={id} />;
-      case "hline":
-        return (
-          <div className="mt-4">
-            <HorizontalLine id={id} />
-          </div>
-        );
-      case "vline":
+
+      case "line":
         return (
           <div className="ml-4">
-            <VerticalLine id={id} />
+            <Line id={id} />
           </div>
         );
       case "input":
@@ -90,9 +84,8 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
       <Fade in={true}>
         <div
           className={`${state.edit && "draggable-pointer"} ${
-            type !== "arrow" && "draggable"
-          } position-absolute`}
-          // style={{ top: `${[50 * (1 + Math.floor(Math.random() * 10))]}px` }}
+            type !== "arrow" && type !== "line" && "draggable"
+          } position-absolute frame-item `}
           onClick={() => {
             if (state.edit) dispatch({ type: SET_CURRENT, payload: id });
           }}
