@@ -44,7 +44,7 @@ const Frame: React.FC<Props> = () => {
       <div
         ref={ref}
         className={`frame ${state.edit && "frame-edit"} ${
-          state.activeId === "canvas" && "cursor-pen"
+          state.activeId === "canvas" && state.edit && "cursor-pen"
         } containment-wrapper`}
       >
         {<Canvas />}
