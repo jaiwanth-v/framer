@@ -42,6 +42,7 @@ const Canvas = () => {
               ref={canvasRef}
               backgroundColor="rgba(0,0,0,0)"
               hideGrid
+              hideInterface
               brushColor={brushColor}
               brushRadius={brushRadius}
               lazyRadius={5}

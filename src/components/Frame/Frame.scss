@@ -1,4 +1,7 @@
 .frame {
+  position: absolute;
+  top: 40px;
+  left: 305px;
   margin-top: 80px;
   width: 900px;
   height: 1000px;
@@ -8,6 +11,11 @@
 }
 .MuiOutlinedInput-input {
   padding: 10px 0 10px 10px !important;
+}
+
+.cursor-pen {
+  z-index: 450;
+  cursor: url(./image.png), default;
 }
 
 .form-container {

@@ -1,11 +1,4 @@
-.input-textfield {
-  width: 175px;
-  height: 100px !important;
-}
-
 .input-edit {
-  width: 175px;
-  height: 39px;
   border: 1.75px solid rgba(0, 0, 0, 0.9);
   border-radius: 4px;
 }
@@ -17,9 +10,5 @@
 }
 
 .centered-placeholder {
-  position: absolute;
-  left: 30%;
-  top: 45%;
-  transform: translate(-50%, -50%);
   font-size: 17px;
 }

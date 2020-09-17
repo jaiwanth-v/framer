@@ -11,7 +11,7 @@ const App: React.FC = () => {
     <div className="wrapper">
       <img className="logo" src={Logo} alt="logo" height="50px" />
       <p className="logo-text">easy prototyping</p>
-      <div className="app-content d-flex justify-content-around p-3">
+      <div className="app-content">
         <AppProvider>
           <Options />
           <Frame />

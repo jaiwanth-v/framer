@@ -26,33 +26,33 @@ const Frame: React.FC<Props> = () => {
   };
 
   return (
-    <>
-      <div className="vh-100 frame-container m-4">
-        <div className="d-flex justify-content-between">
-          <div className="d-flex align-items-center edit-mode">
-            <h5 className="mt-1">Edit Mode</h5>
-            <Toggler handleChange={handleChange} />
-          </div>
-          <Pdf targetRef={ref} filename="code-example.pdf">
-            {({ toPdf }: any) => (
-              <button id="generate" onClick={toPdf}>
-                CREATE PDF
-              </button>
-            )}
-          </Pdf>
+    <div className="vh-100 frame-container m-0">
+      <div className="d-flex justify-content-between">
+        <div className="d-flex align-items-center edit-mode">
+          <h5 className="mt-1">Edit Mode</h5>
+          <Toggler handleChange={handleChange} />
         </div>
-
-        <div
-          ref={ref}
-          className={`frame ${state.edit && "frame-edit"} containment-wrapper`}
-        >
-          {<Canvas />}
-          {state.items.map((v: Item, i: number) => (
-            <FrameItem type={v.type} id={v.id} key={i} />
-          ))}
-        </div>
+        <Pdf targetRef={ref} filename="code-example.pdf">
+          {({ toPdf }: any) => (
+            <button id="generate" onClick={toPdf}>
+              CREATE PDF
+            </button>
+          )}
+        </Pdf>
       </div>
-    </>
+
+      <div
+        ref={ref}
+        className={`frame ${state.edit && "frame-edit"} ${
+          state.activeId === "canvas" && "cursor-pen"
+        } containment-wrapper`}
+      >
+        {<Canvas />}
+        {state.items.map((v: Item, i: number) => (
+          <FrameItem type={v.type} id={v.id} key={i} />
+        ))}
+      </div>
+    </div>
   );
 };
 

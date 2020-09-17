@@ -29,16 +29,35 @@ const InputComponent: React.FC<Props> = ({ id }) => {
         <div>
           <TextField
             variant="outlined"
+            id={`${id}1`}
+            inputProps={{
+              style: {
+                height: `${document.getElementById(id)!.offsetHeight - 20}px`,
+              },
+            }}
+            style={{
+              width: document.getElementById(id)?.offsetWidth,
+            }}
             placeholder={`${label() || "Placeholder"}`}
-            className="input-textfield"
+            className={`input-textfield ${id} `}
           />
         </div>
       );
     else
       return (
         <div className="input-container">
-          <div className="input-edit" />
-          <div className="centered-placeholder">{label() || "Placeholder"}</div>
+          <div
+            className="input-edit resizable d-flex align-items-center"
+            style={{
+              width: document.getElementById(`${id}1`)?.offsetWidth || "180px",
+              height: document.getElementById(`${id}1`)?.offsetHeight || "50px",
+            }}
+            id={id}
+          >
+            <div className="centered-placeholder ml-1">
+              {label() || "Placeholder"}
+            </div>
+          </div>
         </div>
       );
   };
