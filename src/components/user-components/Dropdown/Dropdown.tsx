@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { MenuItem, Select } from "@material-ui/core";
 import { AppContext } from "../../../Context/App.context";
-import DropdownImg from "./Dropdowns.png";
+import DropdownImg from "./Dropdown.png";
 import "./Dropdown.scss";
 
 interface Props {
@@ -26,9 +26,8 @@ const DropdownComponent: React.FC<Props> = ({ id }) => {
     )[0];
     return requiredItem;
   })();
-  var { options, value } = item;
-  // eslint-disable-next-line no-redeclare
-  var [value, setValue] = useState<string>(value || "Placeholder");
+  const { options, value } = item;
+  const [label, setLabel] = useState<string>("");
   const typeToShow = () => {
     if (!edit)
       return (
@@ -37,7 +36,7 @@ const DropdownComponent: React.FC<Props> = ({ id }) => {
             options.length && (
               <>
                 <Select
-                  value={value || "Placeholder"}
+                  value={label || value || "Placeholder"}
                   variant="outlined"
                   className="select-dropdown"
                   onChange={(
@@ -45,14 +44,16 @@ const DropdownComponent: React.FC<Props> = ({ id }) => {
                       name?: string | undefined;
                       value: any;
                     }>
-                  ) => setValue(e.target.value)}
+                  ) => setLabel(e.target.value)}
                 >
                   <MenuItem value={value || "Placeholder"} disabled>
                     {value || "Placeholder"}
                   </MenuItem>
-                  {options.map((option) =>
+                  {options.map((option, idx) =>
                     option !== "" ? (
-                      <MenuItem value={option}> {option} </MenuItem>
+                      <MenuItem key={idx} value={option}>
+                        {option}
+                      </MenuItem>
                     ) : null
                   )}
                 </Select>
@@ -65,7 +66,7 @@ const DropdownComponent: React.FC<Props> = ({ id }) => {
               value={value || "Placeholder"}
             >
               <MenuItem value={value || "Placeholder"} disabled>
-                Placeholder
+                {value || "Placeholder"}
               </MenuItem>
             </Select>
           )}

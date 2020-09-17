@@ -76,24 +76,6 @@ const Options: React.FC<Props> = () => {
           <div className="d-flex flex-column text-center">
             <i
               onClick={() => {
-                dispatch({ type: ADD_ITEM, payload: "hline" });
-              }}
-              className="fas fa-grip-lines fa-2x"
-            ></i>
-            <small>Horizontal Line</small>
-          </div>
-          <div className="d-flex flex-column text-center">
-            <i
-              onClick={() => {
-                dispatch({ type: ADD_ITEM, payload: "vline" });
-              }}
-              className="fas fa-grip-lines-vertical fa-2x"
-            ></i>
-            <small>Vertical line</small>
-          </div>
-          <div className="d-flex flex-column text-center">
-            <i
-              onClick={() => {
                 dispatch({ type: ADD_ITEM, payload: "checkbox" });
               }}
               className="fas fa-check-circle fa-2x"
@@ -151,6 +133,24 @@ const Options: React.FC<Props> = () => {
               className="fas fa-dot-circle fa-2x"
             ></i>
             <small>Radio Input</small>
+          </div>
+          <div className="d-flex flex-column text-center">
+            <i
+              onClick={() => {
+                dispatch({ type: ADD_ITEM, payload: "hline" });
+              }}
+              className="fas fa-grip-lines fa-2x"
+            ></i>
+            <small>Horizontal Line</small>
+          </div>
+          <div className="d-flex flex-column text-center">
+            <i
+              onClick={() => {
+                dispatch({ type: ADD_ITEM, payload: "vline" });
+              }}
+              className="fas fa-grip-lines-vertical fa-2x"
+            ></i>
+            <small>Vertical line</small>
           </div>
           <div className="d-flex flex-column text-center">
             <i

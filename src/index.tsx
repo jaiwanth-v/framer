@@ -3,12 +3,20 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { AppProvider } from "./Context/App.context";
+import { transitions, positions, Provider as AlertProvider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+
+const options = {
+  position: positions.BOTTOM_CENTER,
+  timeout: 2000,
+  offset: "10px",
+  transition: transitions.FADE,
+};
 
 ReactDOM.render(
-  <AppProvider>
+  <AlertProvider template={AlertTemplate} {...options}>
     <App />
-  </AppProvider>,
+  </AlertProvider>,
   document.getElementById("root")
 );
 

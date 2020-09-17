@@ -8,27 +8,35 @@ import {
 } from "../../../Reducer/actionTypes";
 import CustomForm from "./CustomForm";
 import "./Form.scss";
+import { useAlert } from "react-alert";
 
 interface Props {}
 
 const DropdownOptions: React.FC<Props> = () => {
   const { state, dispatch } = useContext(AppContext);
-
   const [value, handleValue, resetValue] = useInput("");
   const [option0, handleOption0, resetOption0] = useInput("");
   const [option1, handleOption1, resetOption1] = useInput("");
   const [option2, handleOption2, resetOption2] = useInput("");
   const [option3, handleOption3, resetOption3] = useInput("");
+  const alert = useAlert();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    alert.success(
+      <div className="alert-dropdown">
+        Switch to preview mode to see options
+      </div>
+    );
     dispatch({
       type: CHANGE_DROPDOWN,
       payload: {
         id: state.activeId,
-        value,
+        value: value || "Placeholder",
         options: [option0, option1, option2, option3],
       },
     });
+
     resetValue();
     resetOption0();
     resetOption1();
