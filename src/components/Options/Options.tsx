@@ -82,7 +82,12 @@ const Options: React.FC<Props> = () => {
             onClick={() => dispatch({ type: SET_CURRENT, payload: null })}
             className="d-flex flex-column align-items-center"
           >
-            <i className="fab fa-bootstrap fa-2x"></i>
+            <i
+              onClick={() => {
+                dispatch({ type: ADD_ITEM, payload: "button" });
+              }}
+              className="fab fa-bootstrap fa-2x"
+            ></i>
             <small>Button</small>
           </div>
           <div
