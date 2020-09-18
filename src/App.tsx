@@ -5,6 +5,7 @@ import Options from "./components/Options/Options";
 import { AppProvider } from "./Context/App.context";
 import "./App.scss";
 import Logo from "./logo.png";
+import Footer from "./components/Footer/Footer";
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
           <Customize />
         </AppProvider>
       </div>
+      <Footer />
     </div>
   );
 };
