@@ -33,6 +33,15 @@ const Options: React.FC<Props> = () => {
             ></i>
             <small>Text</small>
           </div>
+          <div className="d-flex flex-column text-center">
+            <i
+              onClick={() => {
+                dispatch({ type: SET_CURRENT, payload: "canvas" });
+              }}
+              className="fas fa-pencil-alt fa-2x"
+            ></i>
+            <small>Draw</small>
+          </div>
           <div
             onClick={() => dispatch({ type: SET_CURRENT, payload: null })}
             className="d-flex flex-column text-center"
@@ -163,15 +172,6 @@ const Options: React.FC<Props> = () => {
               className="fas fa-dot-circle fa-2x"
             ></i>
             <small>Radio Input</small>
-          </div>
-          <div className="d-flex flex-column text-center">
-            <i
-              onClick={() => {
-                dispatch({ type: SET_CURRENT, payload: "canvas" });
-              }}
-              className="fas fa-pen fa-2x"
-            ></i>
-            <small>Draw</small>
           </div>
           <div
             onClick={() => dispatch({ type: SET_CURRENT, payload: null })}

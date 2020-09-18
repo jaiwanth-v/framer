@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../../Context/App.context";
+import "./Paragraph.scss";
 
 interface Props {
   id: any;
@@ -11,7 +12,7 @@ interface ItemType {
   value: string;
 }
 
-const TextComponent: React.FC<Props> = ({ id }) => {
+const Paragraph: React.FC<Props> = ({ id }) => {
   const { state } = useContext(AppContext);
   const paragraph = () => {
     const requiredItem: ItemType = state.items.filter(
@@ -19,17 +20,32 @@ const TextComponent: React.FC<Props> = ({ id }) => {
     )[0];
     return requiredItem.value;
   };
+
   return (
-    <div className="">
-      <p
-        className="resizable"
-        style={{ maxWidth: "1000px", width: "500px", maxHeight: "1000px" }}
-      >
-        {paragraph() ||
-          "Sometimes I'll start a sentence and I don't even know where it's going. I just hope I find it along the way."}
-      </p>
+    <div
+      id={id}
+      className="resizable"
+      style={{ maxWidth: "1000px", width: "300px", maxHeight: "1000px" }}
+    >
+      {paragraph() ||
+        "Sometimes I'll start a sentence and I don't even know where it's going. I just hope I find it along the way."}
+      <div
+        style={{ MozUserSelect: "none" }}
+        unselectable="on"
+        className="ui-resizable-handle ui-resizable-e"
+      ></div>
+      <div
+        style={{ MozUserSelect: "none" }}
+        unselectable="on"
+        className="ui-resizable-handle ui-resizable-s"
+      ></div>
+      <div
+        unselectable="on"
+        style={{ MozUserSelect: "none" }}
+        className="resize-handle ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"
+      ></div>
     </div>
   );
 };
 
-export default TextComponent;
+export default Paragraph;

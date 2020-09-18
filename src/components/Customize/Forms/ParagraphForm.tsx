@@ -40,7 +40,7 @@ const ParagraphForm: React.FC<Props> = () => {
   };
 
   return (
-    <>
+    <div className="mt-4">
       <CustomForm onSubmit={handleSubmit}>
         <TextField
           value={source}
@@ -48,24 +48,23 @@ const ParagraphForm: React.FC<Props> = () => {
           label="Paragraph"
           multiline
           rows={4}
-          style={{ width: "175px", height: "150px" }}
           variant="outlined"
-          className="form-field animation a3"
-          name=""
+          className="form-field animation a3 paragraph-input"
         />
-
-        <button id="generate1" type="submit" className="animation ml-2 a6">
-          Change Paragraph
-        </button>
-        <button
-          id="generate-danger"
-          className="animation ml-2 mt-3 a6"
-          onClick={handleDelete}
-        >
-          Delete
-        </button>
+        <div className="buttons">
+          <button id="generate1" type="submit" className="animation ml-2 a6">
+            Change Paragraph
+          </button>
+          <button
+            id="generate-danger"
+            className="animation ml-2 mt-3 a6"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+        </div>
       </CustomForm>
-    </>
+    </div>
   );
 };
 

@@ -15,6 +15,10 @@
   margin-left: 600px !important;
 }
 
+*:focus {
+  outline: none !important;
+}
+
 .logo-text {
   white-space: nowrap;
   position: absolute;
@@ -22,4 +26,9 @@
   font-weight: 600;
   top: 50px;
   left: 695px;
+}
+
+.cursor-pen {
+  z-index: 450;
+  cursor: url(./components/Frame/image.png), default;
 }
