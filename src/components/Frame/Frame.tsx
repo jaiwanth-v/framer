@@ -34,7 +34,7 @@ const Frame: React.FC<Props> = () => {
           </h5>
           <Toggler handleChange={handleChange} />
         </div>
-        <Pdf targetRef={ref} filename="code-example.pdf">
+        <Pdf targetRef={ref} filename="your-frame.pdf">
           {({ toPdf }: any) => (
             <button id="generate" onClick={toPdf}>
               CREATE PDF
