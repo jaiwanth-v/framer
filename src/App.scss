@@ -22,7 +22,7 @@
   white-space: nowrap;
   position: absolute;
   cursor: pointer;
-  margin-left: 670px !important;
+  margin-left: 600px !important;
 }
 
 *:focus {
@@ -37,7 +37,12 @@
   cursor: pointer;
   font-weight: 00;
   top: 50px;
-  left: 750px;
+  left: 680px;
+}
+
+.cursor-pen {
+  z-index: 450;
+  cursor: url(./components/Frame/image.png), default;
 }
 
 .footer__text {

@@ -7,7 +7,7 @@
   height: 1010px;
 }
 .frame-edit {
-  background: url("./Cell.png") repeat;
+  background: url("./square.png") repeat;
 }
 .MuiOutlinedInput-input {
   padding: 10px 0 10px 10px !important;
@@ -15,7 +15,7 @@
 
 .cursor-pen {
   z-index: 450;
-  cursor: url(./Cursor.png), default;
+  cursor: url(./image.png), default;
 }
 
 .form-container {
