@@ -30,7 +30,6 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
     "react-to-pdf": "^0.0.13",
-    "react-toggle-dark-mode": "^1.0.2",
     "styled-components": "^5.2.0",
     "typescript": "~3.7.2",
     "uuid": "^8.3.0"
@@ -59,5 +58,8 @@
   },
   "devDependencies": {
     "react-snap": "^1.23.0"
+  },
+  "reactSnap": {
+    "inlineCss": true
   }
 }

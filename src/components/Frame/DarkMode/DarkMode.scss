@@ -1,0 +1,50 @@
+/* ------- Colors - Start ------- */
+$black: #111;
+$white: #fff;
+$dark-mode-black: rgba(0, 0, 0, 0.76);
+$dark-mode-white: rgba(167, 167, 167, 0.15);
+$light-mode-white: rgba(255, 255, 255, 0.75);
+$light-mode-black: rgba(0, 0, 0, 0.1);
+$theme-background: #171717;
+$theme-white: #ecf0f3;
+$light-grey: #808080;
+
+%dark-mode-inner-shadow {
+  box-shadow: inset 5px 5px 5px 0px $black,
+    inset -2px -2px 4px 0px $dark-mode-white;
+}
+%dark-mode-drop-shadow {
+  box-shadow: 10px 10px 10px 0px $dark-mode-black,
+    -2px -2px 10px 0px $dark-mode-white;
+}
+%light-mode-inner-shadow {
+  box-shadow: inset 2px 2px 2px 0px $light-mode-black,
+    inset -2px -2px 2px 0px $light-mode-white;
+}
+%light-mode-drop-shadow {
+  box-shadow: 5px 5px 5px 0px $light-mode-black,
+    -5px -5px 5px 0px $light-mode-white;
+}
+
+.mode-switch {
+  cursor: pointer;
+  outline: none;
+  i {
+    font-size: 22px;
+    transform: rotate(-25deg);
+    color: rgba(0, 0, 0, 0.7);
+    animation: rotateSwitch 0.5s linear;
+  }
+  #dark-mode-switch {
+    display: none;
+  }
+}
+
+@keyframes rotateSwitch {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
