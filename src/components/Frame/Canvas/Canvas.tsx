@@ -37,8 +37,8 @@ const Canvas = () => {
           <div className="canvas-container">
             <CanvasDraw
               disabled={!(state.edit && state.activeId === "canvas")}
-              canvasHeight="1000px"
-              canvasWidth="900px"
+              canvasHeight="1010px"
+              canvasWidth="913px"
               ref={canvasRef}
               backgroundColor="rgba(0,0,0,0)"
               hideGrid

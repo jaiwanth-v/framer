@@ -28,7 +28,7 @@ const CheckboxComponent: React.FC<Props> = () => {
       return (
         <img
           src={CheckboxImg}
-          style={{ borderRadius: "2px" }}
+          style={{ borderRadius: "5px" }}
           height="20px"
           width="20px"
           alt="Checkbox"

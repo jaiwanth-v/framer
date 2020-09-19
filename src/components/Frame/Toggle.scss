@@ -1,23 +1,5 @@
 $value: 0.6;
 
-.toggle-container {
-  -webkit-tap-highlight-color: transparent;
-  background-color: #000;
-  border-radius: 25 * $value * 1px;
-  box-shadow: 0 2 * $value * 1px 20 * $value * 1px 10 * $value * 1px
-    rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-  height: 50 * $value * 1px;
-  overflow: hidden;
-  position: relative;
-  transform: scale(0.7);
-  transition: transform 50ms;
-  width: 100 * $value * 1px;
-}
-.toggle-container:active {
-  transform: scale(0.73);
-}
-
 .edit-mode {
   transition: all 0.25s ease;
   position: absolute;
@@ -31,145 +13,45 @@ $value: 0.6;
   left: 1075px;
 }
 
-.toggle-fill {
-  background-color: #000;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
-.toggle-fill1 {
-  background-color: #fff;
-  clip-path: circle(19 * $value * 1px at 73 * $value * 1px 25 * $value * 1px);
-}
-.toggle-fill2 {
-  animation: right2 500ms both;
-  background-color: #000;
-  clip-path: circle(19 * $value * 1px at 25 * $value * 1px 25 * $value * 1px);
-}
-.toggle-circle {
-  background: #fff;
-  border-radius: 20 * $value * 1px;
-  height: 38 * $value * 1px;
+input[type="checkbox"].switch_1 {
+  margin: 3px 0 0 5px;
+  font-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 45px;
+  height: 1.5em;
+  background: #ddd;
+  border-radius: 3em;
   position: relative;
-  top: 6 * $value * 1px;
-  width: 38 * $value * 1px;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-.toggle-circle1 {
-  background-color: #000;
-  left: 6 * $value * 1px;
+
+input[type="checkbox"].switch_1:checked {
+  background: rgb(104, 103, 103);
 }
-.toggle-circle2 {
-  animation: right4 500ms both;
-  background-color: #fff;
-  left: 54 * $value * 1px;
-}
-.toggle-drop {
-  animation: right2d 500ms both;
-  background-color: #fff;
-  height: 100%;
+
+input[type="checkbox"].switch_1:after {
   position: absolute;
-  width: 100%;
+  content: "";
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background: #fff;
+  -webkit-box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+  -webkit-transform: scale(0.7);
+  transform: scale(0.7);
+  left: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-.toggle-active .toggle-fill1 {
-  animation: left1 500ms both;
+
+input[type="checkbox"].switch_1:checked:after {
+  left: calc(100% - 1.5em);
 }
-.toggle-active .toggle-fill2 {
-  animation: left2 500ms both;
-}
-.toggle-active .toggle-circle1 {
-  animation: left3 500ms both;
-}
-.toggle-active .toggle-circle2 {
-  animation: left4 500ms both;
-}
-.toggle-active .toggle-drop {
-  animation: leftd 500ms both;
-}
-@keyframes left1 {
-  0% {
-    clip-path: circle(19 * $value * 1px at 73 * $value * 1px 25 * $value * 1px);
-  }
-  99% {
-    clip-path: circle(74 * $value * 1px at 73 * $value * 1px 25 * $value * 1px);
-  }
-  100% {
-    clip-path: circle(74 * $value * 1px at 73 * $value * 1px 25 * $value * 1px);
-  }
-}
-@keyframes left2 {
-  0% {
-    clip-path: circle(74 * $value * 1px at 25 * $value * 1px 25 * $value * 1px);
-  }
-  99% {
-    clip-path: circle(19 * $value * 1px at 25 * $value * 1px 25 * $value * 1px);
-  }
-  100% {
-    clip-path: circle(19 * $value * 1px at 25 * $value * 1px 25 * $value * 1px);
-  }
-}
-@keyframes left3 {
-  0% {
-    left: 14 * $value * 1px;
-  }
-  99% {
-    left: 6 * $value * 1px;
-  }
-  100% {
-    left: 6 * $value * 1px;
-  }
-}
-@keyframes left4 {
-  0% {
-    left: 54 * $value * 1px;
-  }
-  99% {
-    left: 46 * $value * 1px;
-  }
-  100% {
-    left: 46 * $value * 1px;
-  }
-}
-@keyframes leftd {
-  0% {
-    opacity: 0;
-  }
-  99% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes right2 {
-  0% {
-    clip-path: circle(19 * $value * 1px at 25 * $value * 1px 25 * $value * 1px);
-  }
-  99% {
-    clip-path: circle(74 * $value * 1px at 25 * $value * 1px 25 * $value * 1px);
-  }
-  100% {
-    clip-path: circle(74 * $value * 1px at 25 * $value * 1px 25 * $value * 1px);
-  }
-}
-@keyframes right2d {
-  0% {
-    opacity: 1;
-  }
-  99% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-@keyframes right4 {
-  0% {
-    left: 46 * $value * 1px;
-  }
-  99% {
-    left: 54 * $value * 1px;
-  }
-  100% {
-    left: 54 * $value * 1px;
-  }
-}
+
+/* Switch 1 Specific Style End */

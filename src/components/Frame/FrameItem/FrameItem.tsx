@@ -28,11 +28,11 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
     if (state.edit) {
       $(".resizable").resizable({
         disabled: false,
-        containment: ".containment-wrapper",
+        containment: ".canvas-container",
       });
       $(".draggable").draggable({
         disabled: false,
-        containment: ".containment-wrapper",
+        containment: ".canvas-container",
       });
     } else {
       $(".resizable").resizable({ disabled: true });
