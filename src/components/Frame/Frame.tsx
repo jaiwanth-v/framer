@@ -1,10 +1,4 @@
-import {
-  enable as enableDarkMode,
-  disable as disableDarkMode,
-  setFetchMethod,
-} from "darkreader";
-import { DarkModeSwitch } from "react-toggle-dark-mode";
-import React, { useContext, createRef, useState } from "react";
+import React, { useContext, createRef } from "react";
 import "./Frame.scss";
 import { AppContext } from "../../Context/App.context";
 import { TOGGLE_EDIT } from "../../Reducer/actionTypes";
@@ -13,6 +7,7 @@ import FrameItem from "./FrameItem/FrameItem";
 import Pdf from "react-to-pdf";
 import Toggler from "./Toggler";
 import Canvas from "./Canvas/Canvas";
+import DarkMode from "./DarkMode/DarkMode";
 
 const ref: React.RefObject<HTMLDivElement> | null | undefined = createRef();
 
@@ -25,19 +20,6 @@ interface Item {
 
 const Frame: React.FC<Props> = () => {
   const { state, dispatch } = useContext(AppContext);
-  const [isDark, setDark] = useState(false);
-
-  function toggleDarkMode() {
-    setFetchMethod(window.fetch);
-    if (!isDark)
-      enableDarkMode({
-        brightness: 100,
-        contrast: 100,
-        sepia: 10,
-      });
-    else disableDarkMode();
-    setDark(!isDark);
-  }
 
   const handleChange = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -46,31 +28,9 @@ const Frame: React.FC<Props> = () => {
   };
 
   return (
-    <>
+    <div>
       <div style={{ float: "right", width: "70px" }}>
-        <div
-          className="shadow-sm"
-          style={{
-            position: "fixed",
-            zIndex: 999,
-            bottom: "30px",
-            borderRadius: "50%",
-          }}
-        >
-          <DarkModeSwitch
-            sunColor=""
-            style={{
-              width: "20px",
-              height: "20px",
-              margin: "13px",
-              borderRadius: "50%",
-            }}
-            moonColor="rgba(0,0,0,0.75)"
-            onChange={toggleDarkMode}
-            checked={!isDark}
-            size={20}
-          />
-        </div>
+        <DarkMode />
       </div>
       <div className="vh-100 frame-container m-0">
         <div className="d-flex justify-content-between">
@@ -101,7 +61,7 @@ const Frame: React.FC<Props> = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
