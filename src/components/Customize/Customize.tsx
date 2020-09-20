@@ -70,9 +70,9 @@ const Customize: React.FC<Props> = ({ text }) => {
 
   return (
     state.edit && (
-      <div className="customize shadow rounded-lg p-4 mt-5">
-        <h3 className="text-center ">Customize</h3>
-        {optionsToShow()}
+      <div className="customize shadow p-4 mt-5">
+        <h3 className="text-center p-2">Customize</h3>
+        <div className="ml-2">{optionsToShow()}</div>
       </div>
     )
   );

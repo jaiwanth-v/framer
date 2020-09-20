@@ -34,13 +34,12 @@ const DarkMode: React.FC<Props> = () => {
   }
   return (
     <div
-      className="mode-switch shadow d-flex justify-content-center align-items-center"
+      className="mode-switch shadow-sm d-flex justify-content-center align-items-center"
       style={{
         position: "fixed",
         zIndex: 999,
-        width: "50px",
-        height: "50px",
-        bottom: "30px",
+        width: "40px",
+        height: "40px",
         borderRadius: "50%",
       }}
       onClick={toggleDark}

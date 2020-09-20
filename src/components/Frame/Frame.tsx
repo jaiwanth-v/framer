@@ -29,10 +29,10 @@ const Frame: React.FC<Props> = () => {
 
   return (
     <div>
-      <div style={{ float: "right", width: "70px" }}>
+      <div style={{ position: "absolute", top: "680px", left: "1440px" }}>
         <DarkMode />
       </div>
-      <div className="vh-100 frame-container m-0">
+      <div className=" frame-container m-0">
         <div className="d-flex justify-content-between">
           <div className="d-flex align-items-center edit-mode">
             <h5 className="mt-1" style={{ whiteSpace: "nowrap" }}>

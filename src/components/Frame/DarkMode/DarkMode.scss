@@ -30,10 +30,10 @@ $light-grey: #808080;
   cursor: pointer;
   outline: none;
   i {
-    font-size: 20px;
+    font-size: 14px;
     transform: rotate(-25deg);
     color: rgba(0, 0, 0, 0.7);
-    animation: rotateSwitch 1s ease-in-out;
+    animation: rotateSwitch 1s alternate;
   }
   #dark-mode-switch {
     display: none;

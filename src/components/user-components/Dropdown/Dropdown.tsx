@@ -78,7 +78,6 @@ const DropdownComponent: React.FC<Props> = ({ id }) => {
           <img
             className="dropdown-edit"
             height="30px"
-            style={{ borderRadius: "4px" }}
             width="100px"
             src={DropdownImg}
             alt=""
