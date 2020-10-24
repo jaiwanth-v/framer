@@ -34,6 +34,7 @@ const InputForm: React.FC<Props> = () => {
     <>
       <CustomForm onSubmit={handleSubmit}>
         <TextField
+          autoFocus
           value={source}
           onChange={handleSource}
           label="Label"

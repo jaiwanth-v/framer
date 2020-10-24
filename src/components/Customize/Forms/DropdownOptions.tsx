@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { TextField } from "@material-ui/core";
 import useInput from "../../../Hooks/useInput";
 import { AppContext } from "../../../Context/App.context";
@@ -8,7 +8,7 @@ import {
 } from "../../../Reducer/actionTypes";
 import CustomForm from "./CustomForm";
 import "./Form.scss";
-import { useAlert } from "react-alert";
+import Snackbar from "./Snackbar/Snackbar";
 
 interface Props {}
 
@@ -19,15 +19,11 @@ const DropdownOptions: React.FC<Props> = () => {
   const [option1, handleOption1, resetOption1] = useInput("");
   const [option2, handleOption2, resetOption2] = useInput("");
   const [option3, handleOption3, resetOption3] = useInput("");
-  const alert = useAlert();
+  const [hasSubmitted, setSubmitted] = useState(false);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    alert.success(
-      <div className="alert-dropdown">
-        Switch to preview mode to see options
-      </div>
-    );
+    setSubmitted(true);
     dispatch({
       type: CHANGE_DROPDOWN,
       payload: {
@@ -92,6 +88,13 @@ const DropdownOptions: React.FC<Props> = () => {
           Delete
         </button>
       </CustomForm>
+      {hasSubmitted ? (
+        <Snackbar
+          key={new Date().getTime()}
+          msg="Switch to preview mode to see all the options"
+          status={"success"}
+        />
+      ) : null}
     </>
   );
 };

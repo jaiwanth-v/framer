@@ -20,8 +20,16 @@ const HeadingComponent: React.FC<Props> = ({ id }) => {
     return requiredItem.value;
   };
   return (
-    <div>
-      <h1>{heading() || "This is a heading"}</h1>
+    <div
+      className="resizable"
+      style={{
+        padding: "10px",
+        minWidth: "175px",
+        minHeight: "60px",
+        overflow: "hidden",
+      }}
+    >
+      <h1 contentEditable>{heading() || "This is a heading"}</h1>
     </div>
   );
 };

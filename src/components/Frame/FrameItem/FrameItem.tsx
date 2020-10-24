@@ -12,6 +12,7 @@ import ParagraphComponent from "../../user-components/Paragraph/ParagraphCompone
 import LinkComponent from "../../user-components/Link/LinkComponent";
 import $ from "jquery";
 import "jqueryui";
+import "./touch-punch.js";
 import { AppContext } from "../../../Context/App.context";
 import { SET_CURRENT } from "../../../Reducer/actionTypes";
 import { Fade } from "@material-ui/core";
@@ -43,11 +44,10 @@ function drag() {
     },
     drag: function (event, ui: any) {
       let original = ui.originalPosition;
-      var maxLeft = 913 - event.target.clientWidth;
+      var maxLeft = 915 - event.target.clientWidth;
       var maxTop = 1010 - event.target.clientHeight;
       let left = (event.clientX - click.x + original.left) / zoom;
       let top = (event.clientY - click.y + original.top) / zoom;
-      console.log(click);
       ui.position = {
         top: Math.max(minTop, Math.min(maxTop, top)),
         left: Math.max(minLeft, Math.min(maxLeft, left)),
@@ -61,7 +61,22 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
     if (state.edit) {
       $(".resizable").resizable({
         disabled: false,
-        containment: ".canvas-container",
+        maxWidth: 915,
+        maxHeight: 1010,
+        alsoResize: ".input-textfield",
+        resize: function (event: any, ui: any) {
+          let [x, y] = [
+            Number(
+              event.target.parentNode?.parentNode.style.left.split("px")[0]
+            ),
+            Number(
+              event.target.parentNode?.parentNode.style.top.split("px")[0]
+            ),
+          ];
+
+          $(this).resizable("option", "maxWidth", 915 - x);
+          $(this).resizable("option", "maxHeight", 1010 - y);
+        },
       });
       drag();
       window.addEventListener("resize", drag);
@@ -90,7 +105,7 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
       case "line":
         return (
           <div className="ml-4">
-            <Line id={id} />
+            <Line />
           </div>
         );
       case "input":
@@ -115,6 +130,7 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
       <Fade in={true}>
         <div
           id={id}
+          style={{ top: 10, left: 10 }}
           tabIndex={1}
           className={`${state.edit && "draggable-pointer"} ${
             type !== "arrow" && type !== "line" && "draggable"

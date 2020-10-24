@@ -1,4 +1,4 @@
-import React, { useContext, createRef, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "./Frame.scss";
 import { AppContext } from "../../Context/App.context";
 import {
@@ -8,12 +8,9 @@ import {
 } from "../../Reducer/actionTypes";
 import { v4 as uuid } from "uuid";
 import FrameItem from "./FrameItem/FrameItem";
-import Pdf from "react-to-pdf";
 import Toggler from "./Toggler";
 import Canvas from "./Canvas/Canvas";
 import DarkMode from "./DarkMode/DarkMode";
-
-const ref: React.RefObject<HTMLDivElement> | null | undefined = createRef();
 
 interface Props {}
 
@@ -40,6 +37,17 @@ const Frame: React.FC<Props> = () => {
     dispatch({ type: TOGGLE_EDIT });
   };
 
+  const handlePrint = () => {
+    if (!state.edit) return window.print();
+    dispatch({ type: TOGGLE_EDIT });
+    setTimeout(() => {
+      window.print();
+    }, 0);
+    setTimeout(() => {
+      dispatch({ type: TOGGLE_EDIT });
+    }, 0);
+  };
+
   return (
     <div>
       <div
@@ -51,32 +59,21 @@ const Frame: React.FC<Props> = () => {
       <div className="frame-container m-0">
         <div className="d-flex justify-content-between">
           <div className="d-flex align-items-center edit-mode">
-            <h5 className="mt-1" style={{ whiteSpace: "nowrap" }}>
+            <h5 className="preview-mode mt-1" style={{ whiteSpace: "nowrap" }}>
               Preview Mode
             </h5>
             <Toggler handleChange={handleChange} />
           </div>
-          <Pdf
-            options={{
-              orientation: "p",
-              unit: "pt",
-              format: [680, 760],
-              putOnlyUsedFonts: true,
-              precision: 0.01,
-            }}
-            targetRef={ref}
-            filename="your-frame.pdf"
+          <button
+            className="print-button ml-3"
+            id="generate"
+            onClick={handlePrint}
           >
-            {({ toPdf }: any) => (
-              <button className="ml-3" id="generate" onClick={toPdf}>
-                CREATE PDF
-              </button>
-            )}
-          </Pdf>
+            Print Frame
+          </button>
         </div>
 
         <div
-          ref={ref}
           className={`frame ${state.edit && "frame-edit"} ${
             state.activeId === "canvas" && state.edit && "cursor-pen"
           } containment-wrapper`}

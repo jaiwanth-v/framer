@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Checkbox } from "@material-ui/core";
 import { AppContext } from "../../../Context/App.context";
-import CheckboxImg from "./Checkbox.jpg";
+import CheckboxImg from "./Checkbox.png";
 
 interface Props {
   id: any;

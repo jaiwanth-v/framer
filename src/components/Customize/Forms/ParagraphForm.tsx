@@ -43,6 +43,7 @@ const ParagraphForm: React.FC<Props> = () => {
     <div className="mt-4">
       <CustomForm onSubmit={handleSubmit}>
         <TextField
+          autoFocus
           value={source}
           onChange={handleSource}
           label="Paragraph"

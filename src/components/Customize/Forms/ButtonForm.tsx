@@ -30,6 +30,7 @@ const ButtonForm: React.FC<Props> = () => {
   return (
     <CustomForm onSubmit={handleSubmit}>
       <TextField
+        autoFocus
         value={source}
         onChange={handleSource}
         label="Text on Button"

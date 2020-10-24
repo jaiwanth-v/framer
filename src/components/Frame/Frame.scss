@@ -51,6 +51,12 @@
   padding: 10px 0 10px 10px !important;
 }
 
+.ui-icon-gripsmall-diagonal-se {
+  background: url("./handle.png") no-repeat 0px 0px !important;
+  background-size: 40px 40px !important;
+  cursor: nwse-resize;
+}
+
 .cursor-pen {
   z-index: 450;
   cursor: url(./pen.png), default;
