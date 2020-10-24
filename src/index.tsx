@@ -4,7 +4,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
-import { hydrate, render } from "react-dom";
+import { render } from "react-dom";
 
 const options = {
   position: positions.BOTTOM_CENTER,
@@ -14,20 +14,11 @@ const options = {
 };
 
 const rootElement = document.getElementById("root");
-if (rootElement?.hasChildNodes()) {
-  hydrate(
-    <AlertProvider template={AlertTemplate} {...options}>
-      <App />
-    </AlertProvider>,
-    rootElement
-  );
-} else {
-  render(
-    <AlertProvider template={AlertTemplate} {...options}>
-      <App />
-    </AlertProvider>,
-    rootElement
-  );
-}
+render(
+  <AlertProvider template={AlertTemplate} {...options}>
+    <App />
+  </AlertProvider>,
+  rootElement
+);
 
 serviceWorker.unregister();

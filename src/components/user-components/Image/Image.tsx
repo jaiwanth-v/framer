@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Image from "./image.svg";
+import Image from "./image.png";
 import { AppContext } from "../../../Context/App.context";
 interface Props {
   id: any;

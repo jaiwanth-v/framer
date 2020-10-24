@@ -5,20 +5,24 @@ import Options from "./components/Options/Options";
 import { AppProvider } from "./Context/App.context";
 import "./App.scss";
 import Footer from "./components/Footer/Footer";
-import { Fade } from "@material-ui/core";
+import Loader, { docReady } from "./Loader";
 
 const App: React.FC = () => {
-  const [show, setShow] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   useEffect(() => {
-    setTimeout(() => {
-      setShow(true);
-    }, 400);
+    docReady(() =>
+      setTimeout(() => {
+        setLoading(false);
+      }, 800)
+    );
   }, []);
-  return (
-    <Fade in={show}>
+  return isLoading ? (
+    <Loader />
+  ) : (
+    <div className="fadein">
       <div className="wrapper">
-        <header className="logo">Frame easy</header>
-        <p className="logo-text">easy prototyping</p>
+        <header className="logo fadein">Frame easy</header>
+        <p className="logo-text fadein">easy prototyping</p>
         <div className="app-content">
           <AppProvider>
             <Options />
@@ -28,7 +32,7 @@ const App: React.FC = () => {
         </div>
         <Footer />
       </div>
-    </Fade>
+    </div>
   );
 };
 

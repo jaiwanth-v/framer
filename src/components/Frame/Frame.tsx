@@ -27,9 +27,7 @@ const Frame: React.FC<Props> = () => {
   useEffect(() => {
     window.addEventListener("mousedown", (e) => {
       let t: any = e.target;
-      while (t && !t.id) {
-        t = t.parentNode;
-      }
+      while (t && !t.id) t = t.parentNode;
       if (t && t.id === "root") dispatch({ type: SET_CURRENT, payload: null });
     });
     window.addEventListener("keydown", (e) => {
@@ -55,7 +53,17 @@ const Frame: React.FC<Props> = () => {
             </h5>
             <Toggler handleChange={handleChange} />
           </div>
-          <Pdf targetRef={ref} filename="your-frame.pdf">
+          <Pdf
+            options={{
+              orientation: "p",
+              unit: "pt",
+              format: [680, 760],
+              putOnlyUsedFonts: true,
+              precision: 0.01,
+            }}
+            targetRef={ref}
+            filename="your-frame.pdf"
+          >
             {({ toPdf }: any) => (
               <button className="ml-3" id="generate" onClick={toPdf}>
                 CREATE PDF
