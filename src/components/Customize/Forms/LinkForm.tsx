@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { TextField } from "@material-ui/core";
 import useInput from "../../../Hooks/useInput";
 import { AppContext } from "../../../Context/App.context";
@@ -9,7 +9,7 @@ import {
 } from "../../../Reducer/actionTypes";
 import CustomForm from "./CustomForm";
 import "./Form.scss";
-import { useAlert } from "react-alert";
+import Snackbar from "./Snackbar/Snackbar";
 
 interface Props {}
 
@@ -18,13 +18,12 @@ const LinkForm: React.FC<Props> = () => {
 
   const [source, handleSource, resetSource] = useInput("");
   const [link, handleLink, resetLink] = useInput("");
-  const alert = useAlert();
+  const [hasSubmitted, setSubmitted] = useState(false);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    alert.success(
-      <div className="alert-dropdown">Switch to preview mode to use links</div>
-    );
+    setSubmitted(true);
+
     dispatch({
       type: CHANGE_LINK,
       payload: { id: state.activeId, href: link },
@@ -69,6 +68,13 @@ const LinkForm: React.FC<Props> = () => {
           Delete
         </button>
       </CustomForm>
+      {hasSubmitted ? (
+        <Snackbar
+          key={new Date().getTime()}
+          msg="Switch to preview mode to click those links"
+          status={"success"}
+        />
+      ) : null}
     </>
   );
 };

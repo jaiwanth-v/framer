@@ -28,48 +28,37 @@ const DropdownComponent: React.FC<Props> = ({ id }) => {
   })();
   const { options, value } = item;
   const [label, setLabel] = useState<string>("");
+  if (label !== "" && options && !options.includes(label)) setLabel("");
   const typeToShow = () => {
     if (!edit)
       return (
         <div>
-          {options ? (
-            options.length && (
-              <>
-                <Select
-                  value={label || value || "Placeholder"}
-                  variant="outlined"
-                  className="select-dropdown"
-                  onChange={(
-                    e: React.ChangeEvent<{
-                      name?: string | undefined;
-                      value: any;
-                    }>
-                  ) => setLabel(e.target.value)}
-                >
-                  <MenuItem value={value || "Placeholder"} disabled>
-                    {value || "Placeholder"}
-                  </MenuItem>
-                  {options.map((option, idx) =>
-                    option !== "" ? (
-                      <MenuItem key={idx} value={option}>
-                        {option}
-                      </MenuItem>
-                    ) : null
-                  )}
-                </Select>
-              </>
-            )
-          ) : (
+          <>
             <Select
+              value={label || value || "Placeholder"}
               variant="outlined"
               className="select-dropdown"
-              value={value || "Placeholder"}
+              onChange={(
+                e: React.ChangeEvent<{
+                  name?: string | undefined;
+                  value: any;
+                }>
+              ) => setLabel(e.target.value)}
             >
-              <MenuItem value={value || "Placeholder"} disabled>
+              <MenuItem value={value || "Placeholder"}>
                 {value || "Placeholder"}
               </MenuItem>
+              {options &&
+                options.length &&
+                options.map((option, idx) =>
+                  option !== "" ? (
+                    <MenuItem key={idx} value={option}>
+                      {option}
+                    </MenuItem>
+                  ) : null
+                )}
             </Select>
-          )}
+          </>
         </div>
       );
     else

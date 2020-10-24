@@ -42,6 +42,7 @@ const DarkMode: React.FC<Props> = () => {
         height: "40px",
         borderRadius: "50%",
       }}
+      id="mode-switch"
       onClick={toggleDark}
     >
       <i className="fas fa-moon" id="light-mode-switch"></i>

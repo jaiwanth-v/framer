@@ -4,6 +4,11 @@
   border-radius: 6.5px;
 }
 
+.MuiPopover-paper,
+.MuiMenu-paper {
+  max-height: unset !important;
+}
+
 .dropdown-container {
   position: relative;
   // text-align: center;

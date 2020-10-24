@@ -8,7 +8,7 @@ const Options: React.FC<Props> = () => {
   const { state, dispatch } = useContext(AppContext);
   return (
     state.edit && (
-      <div className="options shadow rounded-lg h-75 p-4 mt-5">
+      <div id="options" className="options shadow rounded-lg h-75 p-4 mt-5">
         <h3 className="text-center p-2 mb-4">Options</h3>
         <div className="icons">
           <div

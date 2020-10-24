@@ -1,12 +1,21 @@
 .input-edit {
+  width: 200px;
+  height: 64px;
   border: 1.75px solid rgba(0, 0, 0, 0.9);
   border-radius: 4px;
+  .p-2 {
+    margin: 10px 10px 10px 0;
+    overflow: hidden;
+  }
 }
 
 .input-container {
   position: relative;
   text-align: center;
   color: rgba(0, 0, 0, 0.5);
+  textarea {
+    height: -webkit-fill-available !important;
+  }
 }
 
 .centered-placeholder {

@@ -1,5 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap");
 
+@media print {
+  #options,
+  #customize,
+  header,
+  .preview-mode,
+  .print-button,
+  .logo-text,
+  #dark,
+  .footer__text,
+  .slider-container {
+    visibility: hidden;
+  }
+  .frame-edit,
+  .frame {
+    background: fixed;
+    overflow: hidden;
+  }
+}
+
 .fadein {
   opacity: 0;
   animation: fadein 1s forwards;

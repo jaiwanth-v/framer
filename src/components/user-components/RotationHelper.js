@@ -3,6 +3,7 @@
 import PropTypes from "prop-types";
 import React, { PureComponent, Component } from "react";
 import styled from "styled-components";
+import Rotate from "./rotate.png";
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -472,7 +473,7 @@ var StyledRect = styled.div.withConfig({
   displayName: "StyledRect",
   componentId: "sc-1uso172-0",
 })([
-  'position:absolute;border:1px solid #000;.square{position:absolute;width:7px;height:7px;background:white;border:1px solid #000;border-radius:1px;}.resizable-handler{position:absolute;width:14px;height:14px;cursor:pointer;z-index:1;&.tl,&.t,&.tr{top:-7px;}&.tl,&.l,&.bl{left:-7px;}&.bl,&.b,&.br{bottom:-7px;}&.br,&.r,&.tr{right:-7px;}&.l,&.r{margin-top:-7px;}&.t,&.b{margin-left:-7px;}}.rotate{position:absolute;cursor:pointer;left:50%;top:-26px;transform:translateX(-50%);& i{font-size:18px;display:inline-block;width:1em;height:1em;background-size:1em 1em;background-repeat:no-repeat;background-position:center center;background-image:url("https://upload.wikimedia.org/wikipedia/commons/6/62/Antu-object-rotate-right-24.svg");}}.t,.tl,.tr{top:-3px;}.b,.bl,.br{bottom:-3px;}.r,.tr,.br{right:-3px;}.tl,.l,.bl{left:-3px;}.l,.r{top:50%;margin-top:-3px;}.t,.b{left:50%;margin-left:-3px;}',
+  `position:absolute;border:1px solid #000;.square{position:absolute;width:7px;height:7px;background:white;border:1px solid #000;border-radius:1px;}.resizable-handler{position:absolute;width:14px;height:14px;cursor:pointer;z-index:1;&.tl,&.t,&.tr{top:-7px;}&.tl,&.l,&.bl{left:-7px;}&.bl,&.b,&.br{bottom:-7px;}&.br,&.r,&.tr{right:-7px;}&.l,&.r{margin-top:-7px;}&.t,&.b{margin-left:-7px;}}.rotate{position:absolute;cursor:pointer;left:50%;top:-26px;transform:translateX(-50%);& i{font-size:18px;display:inline-block;width:1em;height:1em;background-size:1em 1em;background-repeat:no-repeat;background-position:center center;background-image:url(${Rotate});}}.t,.tl,.tr{top:-3px;}.b,.bl,.br{bottom:-3px;}.r,.tr,.br{right:-3px;}.tl,.l,.bl{left:-3px;}.l,.r{top:50%;margin-top:-3px;}.t,.b{left:50%;margin-left:-3px;}`,
 ]);
 
 var zoomableMap = {
@@ -533,13 +534,16 @@ var Rect =
 
           var onMove = function onMove(e) {
             if (!_this._isMouseDown) return; // patch: fix windows press win key during mouseup issue
-
+            e.preventDefault();
             e.stopImmediatePropagation();
             var clientX = e.clientX,
               clientY = e.clientY;
-            var deltaX = clientX - startX;
-            var deltaY = clientY - startY;
+            const actualWidth = 1524;
+            let width = document.documentElement.clientWidth;
+            let zoom = width / actualWidth;
 
+            var deltaX = (clientX - startX) / zoom;
+            var deltaY = (clientY - startY) / zoom;
             _this.props.onDrag(deltaX, deltaY);
 
             startX = clientX;
@@ -556,6 +560,49 @@ var Rect =
 
           document.addEventListener("mousemove", onMove);
           document.addEventListener("mouseup", onUp);
+        }
+      );
+      _defineProperty(
+        _assertThisInitialized(_assertThisInitialized(_this)),
+        "startTouchDrag",
+        function (event) {
+          var e = event.changedTouches[0];
+          var startX = e.clientX,
+            startY = e.clientY;
+          _this.props.onDragStart && _this.props.onDragStart();
+          _this._isMouseDown = true;
+
+          var onMove = function onMove(event) {
+            var e = event.changedTouches[0];
+            if (!_this._isMouseDown) return; // patch: fix windows press win key during mouseup issue
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            var clientX = e.clientX,
+              clientY = e.clientY;
+            const actualWidth = 1524;
+            let width = document.documentElement.clientWidth;
+            let zoom = width / actualWidth;
+
+            var deltaX = (clientX - startX) / zoom;
+            var deltaY = (clientY - startY) / zoom;
+            _this.props.onDrag(deltaX, deltaY);
+
+            startX = clientX;
+            startY = clientY;
+          };
+
+          var onUp = function onUp() {
+            document.removeEventListener("touchmove", onMove, {
+              passive: false,
+            });
+            document.removeEventListener("touchend", onUp, { passive: false });
+            if (!_this._isMouseDown) return;
+            _this._isMouseDown = false;
+            _this.props.onDragEnd && _this.props.onDragEnd();
+          };
+
+          document.addEventListener("touchmove", onMove, { passive: false });
+          document.addEventListener("touchend", onUp, { passive: false });
         }
       );
 
@@ -583,7 +630,7 @@ var Rect =
 
           var onMove = function onMove(e) {
             if (!_this._isMouseDown) return; // patch: fix windows press win key during mouseup issue
-
+            e.preventDefault();
             e.stopImmediatePropagation();
             var clientX = e.clientX,
               clientY = e.clientY;
@@ -606,6 +653,59 @@ var Rect =
 
           document.addEventListener("mousemove", onMove);
           document.addEventListener("mouseup", onUp);
+        }
+      );
+      _defineProperty(
+        _assertThisInitialized(_assertThisInitialized(_this)),
+        "startTouchRotate",
+        function (event) {
+          var e = event.changedTouches[0];
+          var clientX = e.clientX,
+            clientY = e.clientY;
+          var startAngle = _this.props.styles.transform.rotateAngle;
+
+          var rect = _this.$element.getBoundingClientRect();
+
+          var center = {
+            x: rect.left + rect.width / 2,
+            y: rect.top + rect.height / 2,
+          };
+          var startVector = {
+            x: clientX - center.x,
+            y: clientY - center.y,
+          };
+          _this.props.onRotateStart && _this.props.onRotateStart();
+          _this._isMouseDown = true;
+
+          var onMove = function onMove(event) {
+            if (!_this._isMouseDown) return; // patch: fix windows press win key during mouseup issue
+            var e = event.changedTouches[0];
+            event.preventDefault();
+
+            event.stopImmediatePropagation();
+            var clientX = e.clientX,
+              clientY = e.clientY;
+            var rotateVector = {
+              x: clientX - center.x,
+              y: clientY - center.y,
+            };
+            var angle = getAngle(startVector, rotateVector);
+
+            _this.props.onRotate(angle, startAngle);
+          };
+
+          var onUp = function onUp() {
+            document.removeEventListener("touchmove", onMove, {
+              passive: false,
+            });
+            document.removeEventListener("touchend", onUp, { passive: false });
+            if (!_this._isMouseDown) return;
+            _this._isMouseDown = false;
+            _this.props.onRotateEnd && _this.props.onRotateEnd();
+          };
+
+          document.addEventListener("touchmove", onMove, { passive: false });
+          document.addEventListener("touchend", onUp, { passive: false });
         }
       );
 
@@ -638,12 +738,15 @@ var Rect =
 
           var onMove = function onMove(e) {
             if (!_this._isMouseDown) return; // patch: fix windows press win key during mouseup issue
-
+            e.preventDefault();
             e.stopImmediatePropagation();
             var clientX = e.clientX,
               clientY = e.clientY;
-            var deltaX = clientX - startX;
-            var deltaY = clientY - startY;
+            const actualWidth = 1524;
+            let width = document.documentElement.clientWidth;
+            let zoom = width / actualWidth;
+            var deltaX = (clientX - startX) / zoom;
+            var deltaY = (clientY - startY) / zoom;
             var alpha = Math.atan2(deltaY, deltaX);
             var deltaL = getLength(deltaX, deltaY);
             var isShiftKey = e.shiftKey;
@@ -662,6 +765,68 @@ var Rect =
 
           document.addEventListener("mousemove", onMove);
           document.addEventListener("mouseup", onUp);
+        }
+      );
+      _defineProperty(
+        _assertThisInitialized(_assertThisInitialized(_this)),
+        "startTouchResize",
+        function (event, cursor) {
+          var e = event.changedTouches[0];
+          document.body.style.cursor = cursor;
+          var _this$props$styles = _this.props.styles,
+            _this$props$styles$po = _this$props$styles.position,
+            centerX = _this$props$styles$po.centerX,
+            centerY = _this$props$styles$po.centerY,
+            _this$props$styles$si = _this$props$styles.size,
+            width = _this$props$styles$si.width,
+            height = _this$props$styles$si.height,
+            rotateAngle = _this$props$styles.transform.rotateAngle;
+          var startX = e.clientX,
+            startY = e.clientY;
+          var rect = {
+            width: width,
+            height: height,
+            centerX: centerX,
+            centerY: centerY,
+            rotateAngle: rotateAngle,
+          };
+          var type = e.target.getAttribute("class").split(" ")[0];
+          _this.props.onResizeStart && _this.props.onResizeStart();
+          _this._isMouseDown = true;
+
+          var onMove = function onMove(event) {
+            if (!_this._isMouseDown) return; // patch: fix windows press win key during mouseup issue
+            var e = event.changedTouches[0];
+            event.preventDefault();
+
+            event.stopImmediatePropagation();
+            var clientX = e.clientX,
+              clientY = e.clientY;
+            const actualWidth = 1524;
+            let width = document.documentElement.clientWidth;
+            let zoom = width / actualWidth;
+            var deltaX = (clientX - startX) / zoom;
+            var deltaY = (clientY - startY) / zoom;
+            var alpha = Math.atan2(deltaY, deltaX);
+            var deltaL = getLength(deltaX, deltaY);
+            var isShiftKey = e.shiftKey;
+
+            _this.props.onResize(deltaL, alpha, rect, type, isShiftKey);
+          };
+
+          var onUp = function onUp() {
+            document.body.style.cursor = "auto";
+            document.removeEventListener("touchmove", onMove, {
+              passive: false,
+            });
+            document.removeEventListener("touchend", onUp, { passive: false });
+            if (!_this._isMouseDown) return;
+            _this._isMouseDown = false;
+            _this.props.onResizeEnd && _this.props.onResizeEnd();
+          };
+
+          document.addEventListener("touchmove", onMove, { passive: false });
+          document.addEventListener("touchend", onUp, { passive: false });
         }
       );
 
@@ -707,6 +872,7 @@ var Rect =
             {
               ref: this.setElementRef,
               onMouseDown: this.startDrag,
+              onTouchStart: this.startTouchDrag,
               className: "rect single-resizer",
               style: style,
             },
@@ -716,6 +882,7 @@ var Rect =
                 {
                   className: "rotate",
                   onMouseDown: this.startRotate,
+                  onTouchStart: this.startTouchRotate,
                 },
                 React.createElement("i", null)
               ),
@@ -732,6 +899,9 @@ var Rect =
                 className: "".concat(zoomableMap[d], " resizable-handler"),
                 onMouseDown: function onMouseDown(e) {
                   return _this2.startResize(e, cursor);
+                },
+                onTouchStart: function onMouseDown(e) {
+                  return _this2.startTouchResize(e, cursor);
                 },
               });
             }),

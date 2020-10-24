@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+/*eslint-disable*/
+import React, { useContext, useState } from "react";
 import { TextField } from "@material-ui/core";
 import { AppContext } from "../../../Context/App.context";
 import "./Input.scss";
@@ -24,42 +25,24 @@ const InputComponent: React.FC<Props> = ({ id }) => {
     return requiredItem.value;
   };
   const typeToShow = () => {
-    if (!edit)
-      return (
-        <div>
-          <TextField
-            variant="outlined"
-            id={`${id}1`}
-            inputProps={{
-              style: {
-                height: `${document.getElementById(id)!.offsetHeight - 20}px`,
-              },
-            }}
-            style={{
-              width: document.getElementById(id)?.offsetWidth,
-            }}
-            placeholder={`${label() || "Placeholder"}`}
-            className={`input-textfield ${id} `}
-          />
+    return (
+      <div className="input-container">
+        <div className={`${edit && "input-edit"} resizable d-flex`} id={id}>
+          {edit ? (
+            <div className="p-2 ">{label() || "Placeholder"}</div>
+          ) : (
+            <TextField
+              multiline
+              variant="outlined"
+              style={{ width: "inherit" }}
+              id={`${id}1`}
+              placeholder={`${label() || "Placeholder"}`}
+              className={`input-textfield ${id} `}
+            />
+          )}
         </div>
-      );
-    else
-      return (
-        <div className="input-container">
-          <div
-            className="input-edit resizable d-flex align-items-center"
-            style={{
-              width: document.getElementById(`${id}1`)?.offsetWidth || "180px",
-              height: document.getElementById(`${id}1`)?.offsetHeight || "50px",
-            }}
-            id={id}
-          >
-            <div className="centered-placeholder ml-1">
-              {label() || "Placeholder"}
-            </div>
-          </div>
-        </div>
-      );
+      </div>
+    );
   };
   return typeToShow();
 };

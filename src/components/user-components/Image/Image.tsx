@@ -24,7 +24,8 @@ const ImageComponent: React.FC<Props> = ({ id }) => {
     <div>
       <img
         style={{ width: "156px", height: "126px" }}
-        className="resizable ui-widget-content"
+        id={`${id}1`}
+        className="ui-widget-content resizable"
         src={ImageSrc() || Image}
         alt=""
       />
