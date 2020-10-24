@@ -23,21 +23,35 @@ interface Props {
 }
 
 function drag() {
+  var $root: any = $("#root");
+  const actualWidth = 1524;
+  let width = document.documentElement.clientWidth;
+  let zoom = width / actualWidth;
+  var minLeft = parseFloat($root.css("paddingLeft"));
+  var minTop = parseFloat($root.css("paddingTop"));
+
+  let click = {
+    x: 0,
+    y: 0,
+  };
   $(".draggable").draggable({
     disabled: false,
-    containment: ".canvas-container",
+    scroll: false,
+    start: function (event) {
+      click.x = event.clientX;
+      click.y = event.clientY;
+    },
     drag: function (event, ui: any) {
-      const actualWidth = 1524;
-      let width = document.documentElement.clientWidth;
-      let zoomScale = width / actualWidth;
-      var changeLeft = ui.position.left - ui.originalPosition.left; // find change in left
-      var newLeft = ui.originalPosition.left + changeLeft / zoomScale; // adjust new left by our zoomScale
-
-      var changeTop = ui.position.top - ui.originalPosition.top; // find change in top
-      var newTop = ui.originalPosition.top + changeTop / zoomScale; // adjust new top by our zoomScale
-
-      ui.position.left = newLeft;
-      ui.position.top = newTop;
+      let original = ui.originalPosition;
+      var maxLeft = 913 - event.target.clientWidth;
+      var maxTop = 1010 - event.target.clientHeight;
+      let left = (event.clientX - click.x + original.left) / zoom;
+      let top = (event.clientY - click.y + original.top) / zoom;
+      console.log(click);
+      ui.position = {
+        top: Math.max(minTop, Math.min(maxTop, top)),
+        left: Math.max(minLeft, Math.min(maxLeft, left)),
+      };
     },
   });
 }
@@ -50,9 +64,7 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
         containment: ".canvas-container",
       });
       drag();
-      window.addEventListener("resize", () => {
-        drag();
-      });
+      window.addEventListener("resize", drag);
     } else {
       $(".resizable").resizable({ disabled: true });
       $(".draggable").draggable({

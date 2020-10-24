@@ -197,7 +197,7 @@ const Options: React.FC<Props> = () => {
               }}
               className="fas rotate-45 fa-long-arrow-alt-up fa-2x"
             ></i>
-            <small>Arrow (Beta) </small>
+            <small>Arrow </small>
           </div>
         </div>
       </div>

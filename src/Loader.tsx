@@ -15,10 +15,10 @@ const DotWrapper = styled.div`
 `;
 
 const Dot = styled.div`
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: #4285f4;
   border-radius: 50%;
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   margin: 0 5px;
   animation: ${BounceAnimation} 0.5s linear infinite;
   animation-delay: ${(props: any) => props.delay};

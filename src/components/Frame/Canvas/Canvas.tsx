@@ -1,5 +1,5 @@
 import React, { useState, useRef, useContext } from "react";
-import CanvasDraw from "react-canvas-draw";
+import CanvasDraw from "./CanvasModule/main";
 import ColorPicker from "./ColorPicker";
 import CanvasTools from "./CanvasTools";
 import "./Canvas.scss";
