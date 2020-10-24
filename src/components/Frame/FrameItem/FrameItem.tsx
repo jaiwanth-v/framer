@@ -22,6 +22,25 @@ interface Props {
   id: any;
 }
 
+function drag() {
+  $(".draggable").draggable({
+    disabled: false,
+    containment: ".canvas-container",
+    drag: function (event, ui: any) {
+      const actualWidth = 1524;
+      let width = document.documentElement.clientWidth;
+      let zoomScale = width / actualWidth;
+      var changeLeft = ui.position.left - ui.originalPosition.left; // find change in left
+      var newLeft = ui.originalPosition.left + changeLeft / zoomScale; // adjust new left by our zoomScale
+
+      var changeTop = ui.position.top - ui.originalPosition.top; // find change in top
+      var newTop = ui.originalPosition.top + changeTop / zoomScale; // adjust new top by our zoomScale
+
+      ui.position.left = newLeft;
+      ui.position.top = newTop;
+    },
+  });
+}
 const FrameItem: React.FC<Props> = ({ type, id }) => {
   const { state, dispatch } = useContext(AppContext);
   useEffect(() => {
@@ -30,9 +49,9 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
         disabled: false,
         containment: ".canvas-container",
       });
-      $(".draggable").draggable({
-        disabled: false,
-        containment: ".canvas-container",
+      drag();
+      window.addEventListener("resize", () => {
+        drag();
       });
     } else {
       $(".resizable").resizable({ disabled: true });

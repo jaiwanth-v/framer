@@ -1,13 +1,8 @@
-@font-face {
-  font-family: "Hess Gothic Round NF";
-  font-weight: bold;
-  font-style: normal;
-  src: url(./HessGothicRoundNF-Bold.woff) format("woff");
-}
+@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap");
 
 .fadein {
   opacity: 0;
-  animation: fadein 2s forwards;
+  animation: fadein 1s forwards;
 }
 @keyframes fadein {
   from {
@@ -19,29 +14,27 @@
 }
 
 .wrapper {
-  position: relative;
-  overflow-x: visible;
-  .app-content {
-    width: 1500px;
-    height: auto;
-  }
   .logo {
-    font-family: "Hess Gothic Round NF";
-    font-size: 40px;
+    font-family: "Reem Kufi", sans-serif;
+    font-size: 45px;
+    font-weight: bold;
     white-space: nowrap;
     position: absolute;
     cursor: pointer;
     margin-left: 650px !important;
+    transition: all 0.2s ease;
   }
 
   .logo-text {
-    font-family: "Hess Gothic Round NF";
+    font-family: "Reem Kufi", sans-serif;
+    font-weight: bold;
     white-space: nowrap;
     position: absolute;
     cursor: pointer;
     font-weight: 00;
-    top: 50px;
-    left: 720px;
+    top: 55px;
+    left: 740px;
+    transition: all 0.2s ease;
   }
 
   .footer__text {
@@ -61,29 +54,4 @@ img {
 
 *:focus {
   outline: none !important;
-}
-
-svg#preloader {
-  position: absolute;
-  width: 200px;
-  height: 80px;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-}
-
-#plug,
-#socket {
-  fill: #2196f3;
-}
-
-#loop-normal {
-  fill: none;
-  stroke: #455a64;
-  stroke-width: 12;
-}
-#loop-offset {
-  display: none;
 }

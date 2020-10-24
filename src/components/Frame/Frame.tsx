@@ -42,7 +42,10 @@ const Frame: React.FC<Props> = () => {
 
   return (
     <div>
-      <div style={{ position: "absolute", top: "680px", left: "1440px" }}>
+      <div
+        id="dark"
+        style={{ position: "fixed", top: "720px", left: "1440px" }}
+      >
         <DarkMode />
       </div>
       <div className="frame-container m-0">
