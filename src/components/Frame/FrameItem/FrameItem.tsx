@@ -40,7 +40,7 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
         disabled: true,
       });
     }
-  });
+  }, [state.edit]);
   const componentToShow = () => {
     switch (type) {
       case "button":
@@ -83,11 +83,18 @@ const FrameItem: React.FC<Props> = ({ type, id }) => {
     <>
       <Fade in={true}>
         <div
+          id={id}
+          tabIndex={1}
           className={`${state.edit && "draggable-pointer"} ${
             type !== "arrow" && type !== "line" && "draggable"
-          } position-absolute frame-item `}
+          } position-absolute frame-item ${
+            type !== "arrow" && type !== "line" && state.activeId === id
+              ? "activeElement"
+              : null
+          }`}
           onClick={() => {
-            if (state.edit) dispatch({ type: SET_CURRENT, payload: id });
+            if (state.edit && state.activeId !== id)
+              dispatch({ type: SET_CURRENT, payload: id });
           }}
         >
           {componentToShow()}

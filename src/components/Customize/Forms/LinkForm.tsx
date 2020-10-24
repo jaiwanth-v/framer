@@ -9,6 +9,7 @@ import {
 } from "../../../Reducer/actionTypes";
 import CustomForm from "./CustomForm";
 import "./Form.scss";
+import { useAlert } from "react-alert";
 
 interface Props {}
 
@@ -17,8 +18,13 @@ const LinkForm: React.FC<Props> = () => {
 
   const [source, handleSource, resetSource] = useInput("");
   const [link, handleLink, resetLink] = useInput("");
+  const alert = useAlert();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    alert.success(
+      <div className="alert-dropdown">Switch to preview mode to use links</div>
+    );
     dispatch({
       type: CHANGE_LINK,
       payload: { id: state.activeId, href: link },

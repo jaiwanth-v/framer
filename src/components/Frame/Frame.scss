@@ -1,14 +1,52 @@
-.frame {
-  position: absolute;
-  top: 40px;
-  left: 305px;
-  margin-top: 80px;
-  width: 913px;
-  height: 1010px;
+.frame-container {
+  .frame {
+    position: absolute;
+    top: 40px;
+    left: 305px;
+    margin-top: 80px;
+    width: 913px;
+    height: 1010px;
+    .activeElement {
+      padding: 2px;
+      border-radius: 5px !important;
+      margin: -4px;
+      border: 2px dotted #111010;
+      transition: box-shadow 0.2s !important;
+    }
+  }
+
+  $primary: #464646;
+
+  #generate {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: none;
+    height: 40px;
+    text-align: center;
+    width: 130px;
+    border-radius: 40px;
+    background: #fff;
+    border: 2px solid $primary;
+    color: $primary;
+    letter-spacing: 1px;
+    text-shadow: 0;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    &:hover {
+      color: white;
+      background: $primary;
+    }
+    &:active {
+      letter-spacing: 2px;
+    }
+  }
+  .frame-edit {
+    background: url("./square.png") repeat;
+  }
 }
-.frame-edit {
-  background: url("./square.png") repeat;
-}
+
 .MuiOutlinedInput-input {
   padding: 10px 0 10px 10px !important;
 }
@@ -20,99 +58,4 @@
 
 .form-container {
   width: 15%;
-}
-
-$primary: #464646;
-$secondary: #ff4444;
-$third: $primary;
-#generate {
-  font-family: "Roboto", sans-serif;
-}
-
-#generate {
-  text-transform: uppercase;
-  outline: none;
-  height: 40px;
-  text-align: center;
-  width: 130px;
-  border-radius: 40px;
-  background: #fff;
-  border: 2px solid $primary;
-  color: $primary;
-  letter-spacing: 1px;
-  text-shadow: 0;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  &:hover {
-    color: white;
-    background: $primary;
-  }
-  &:active {
-    //letter-spacing: 2px;
-    letter-spacing: 2px;
-  }
-  // &:after {
-  //   content: "CREATE PDF";
-  // }
-}
-#generate1 {
-  text-transform: uppercase;
-
-  outline: none;
-  height: 40px;
-  text-align: center;
-  width: 130px;
-  border-radius: 40px;
-  background: #fff;
-  border: 2px solid $third;
-  color: $third;
-  letter-spacing: 1px;
-  text-shadow: 0;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  &:hover {
-    color: white;
-    background: $third;
-  }
-  &:active {
-    //letter-spacing: 2px;
-    letter-spacing: 2px;
-  }
-  // &:after {
-  //   content: "CREATE PDF";
-  // }
-}
-#generate-danger {
-  text-transform: uppercase;
-
-  outline: none;
-  height: 40px;
-  text-align: center;
-  width: 130px;
-  border-radius: 40px;
-  background: #fff;
-  border: 2px solid $secondary;
-  color: $secondary;
-  letter-spacing: 1px;
-  text-shadow: 0;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  &:hover {
-    color: white;
-    background: $secondary;
-  }
-  &:active {
-    //letter-spacing: 2px;
-    letter-spacing: 2px;
-  }
-}
-
-.frame-item {
-  z-index: 60;
 }

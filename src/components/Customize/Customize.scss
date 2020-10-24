@@ -5,4 +5,55 @@
   width: 240px;
   height: 530px;
   border-radius: 30px;
+  $secondary: #ff4444;
+  $third: #464646;
+
+  #generate1 {
+    text-transform: uppercase;
+    outline: none;
+    height: 40px;
+    text-align: center;
+    width: 130px;
+    border-radius: 40px;
+    background: #fff;
+    border: 2px solid $third;
+    color: $third;
+    letter-spacing: 1px;
+    text-shadow: 0;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    &:hover {
+      color: white;
+      background: $third;
+    }
+    &:active {
+      letter-spacing: 2px;
+    }
+  }
+  #generate-danger {
+    text-transform: uppercase;
+    outline: none;
+    height: 40px;
+    text-align: center;
+    width: 130px;
+    border-radius: 40px;
+    background: #fff;
+    border: 2px solid $secondary;
+    color: $secondary;
+    letter-spacing: 1px;
+    text-shadow: 0;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    &:hover {
+      color: white;
+      background: $secondary;
+    }
+    &:active {
+      letter-spacing: 2px;
+    }
+  }
 }

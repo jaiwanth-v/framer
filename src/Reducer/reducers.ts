@@ -33,7 +33,7 @@ interface Component {
 interface AppState {
   edit: boolean;
   items: Array<Component>;
-  activeId: typeof uuid | null;
+  activeId: any;
 }
 
 const initialState: AppState = {
@@ -46,12 +46,12 @@ export const reducer = (state = initialState, action: Action) => {
   const { type, payload } = action;
   switch (type) {
     case TOGGLE_EDIT:
-      return { ...state, edit: !state.edit };
+      return { ...state, edit: !state.edit, activeId: null };
     case ADD_ITEM:
       state.items.push({ type: payload, id: uuid() });
       return { ...state };
     case SET_CURRENT:
-      return state.activeId === payload
+      return state.edit && state.activeId === payload
         ? state
         : { ...state, activeId: payload };
     case CHANGE_IMAGE_SRC:
@@ -64,11 +64,10 @@ export const reducer = (state = initialState, action: Action) => {
         item.id === payload.id ? { ...item, value: payload.value } : item
       );
       return { ...state, items: newItemsForButton };
-    case DELETE_COMPONENT:
-      return {
-        ...state,
-        items: state.items.filter((item) => item.id !== state.activeId),
-      };
+    case DELETE_COMPONENT: {
+      document.getElementById(state.activeId?.toString())?.remove();
+      return { ...state, activeId: null };
+    }
     case CHANGE_HEADING_VAL:
       let newItemsForHeading = state.items.map((item) =>
         item.id === payload.id ? { ...item, value: payload.value } : item

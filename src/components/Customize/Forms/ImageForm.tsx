@@ -44,7 +44,7 @@ const ImageForm: React.FC<Props> = () => {
         <button
           id="generate-danger"
           className="animation ml-2 mt-3 a6"
-          onClick={handleDelete}
+          onMouseDown={handleDelete}
         >
           Delete
         </button>

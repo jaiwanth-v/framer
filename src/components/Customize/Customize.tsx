@@ -18,7 +18,6 @@ interface Props {
 
 const Customize: React.FC<Props> = ({ text }) => {
   const { state } = useContext(AppContext);
-
   const optionsToShow = () => {
     const requiredItem = state.items.filter(
       (item: any) => item.id === state.activeId
@@ -50,8 +49,7 @@ const Customize: React.FC<Props> = ({ text }) => {
         return <DropdownOptions />;
       case "input":
         return <InputForm />;
-      case "hline":
-      case "vline":
+      case "line":
       case "radio":
       case "checkbox":
       case "box":
@@ -70,7 +68,7 @@ const Customize: React.FC<Props> = ({ text }) => {
 
   return (
     state.edit && (
-      <div className="customize shadow p-4 mt-5">
+      <div id="customize" className="customize shadow p-4 mt-5">
         <h3 className="text-center p-2">Customize</h3>
         <div className="ml-2">{optionsToShow()}</div>
       </div>

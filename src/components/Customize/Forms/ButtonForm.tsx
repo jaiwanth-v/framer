@@ -22,6 +22,7 @@ const ButtonForm: React.FC<Props> = () => {
     });
     resetSource();
   };
+
   const handleDelete = () => {
     dispatch({ type: DELETE_COMPONENT, payload: { id: state.activeId } });
   };

@@ -8,6 +8,10 @@
   height: auto;
 }
 
+img {
+  vertical-align: sub;
+}
+
 @font-face {
   font-family: "Hess Gothic Round NF";
   font-weight: bold;
@@ -36,11 +40,6 @@
   font-weight: 00;
   top: 50px;
   left: 720px;
-}
-
-.cursor-pen {
-  z-index: 450;
-  cursor: url(./components/Frame/image.png), default;
 }
 
 .footer__text {
