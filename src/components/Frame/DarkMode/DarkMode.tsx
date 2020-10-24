@@ -34,6 +34,7 @@ const DarkMode: React.FC<Props> = () => {
   }
   return (
     <div
+      id="dark"
       className="mode-switch shadow-sm d-flex justify-content-center align-items-center"
       style={{
         position: "fixed",
