@@ -1,8 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ArrowImg from "./arrow.png";
 import ResizableRect from "../RotationHelper";
 import { AppContext } from "../../../Context/App.context";
 import "./Arrow.scss";
+import { dark } from "@material-ui/core/styles/createPalette";
 
 interface styles {
   left: number;
@@ -77,8 +78,23 @@ const Arrow: React.FC = () => {
           .getPropertyValue("background-color") !== "rgb(255, 255, 255)"
       );
   }
-  window.addEventListener("click", detectClick);
-  window.addEventListener("touchstart", detectClick);
+  useEffect(() => {
+    function doc_keyUp(e: KeyboardEvent) {
+      if (e.altKey && e.key === "D")
+        setTimeout(() => {
+          setDark(
+            window
+              .getComputedStyle(document.body)
+              .getPropertyValue("background-color") !== "rgb(255, 255, 255)"
+          );
+        }, 1);
+    }
+    window.addEventListener("click", detectClick);
+    window.addEventListener("touchstart", detectClick);
+    window.addEventListener("keyup", doc_keyUp);
+    return () => window.removeEventListener("keyup", doc_keyUp);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dark]);
 
   const handleEnter = () => setChecked(true);
 

@@ -35,7 +35,6 @@ const ButtonForm: React.FC<Props> = () => {
         onChange={handleSource}
         label="Text on Button"
         className="form-field animation a3"
-        name=""
       />
       <button id="generate1" type="submit" className="animation ml-2 mt-3 a6">
         Change Name

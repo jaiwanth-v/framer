@@ -44,18 +44,17 @@ const LinkForm: React.FC<Props> = () => {
     <>
       <CustomForm onSubmit={handleSubmit}>
         <TextField
+          autoFocus
           value={link}
           onChange={handleLink}
           label="Link"
           className="form-field animation a3"
-          name=""
         />
         <TextField
           value={source}
           onChange={handleSource}
           label="Text on Link"
           className="form-field animation a3"
-          name=""
         />
         <button id="generate1" type="submit" className="animation ml-2 mt-3 a6">
           Change Link

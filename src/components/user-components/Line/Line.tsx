@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ResizableRect from "../RotationHelper";
 import { AppContext } from "../../../Context/App.context";
 
@@ -32,8 +32,11 @@ const Line: React.FC = () => {
     while (t && !t.id) t = t.parentNode;
     if (t && t.id === "root" && checked) setChecked(false);
   }
-  window.addEventListener("mousedown", detectClick);
-  window.addEventListener("touchstart", detectClick);
+  useEffect(() => {
+    window.addEventListener("click", detectClick);
+    window.addEventListener("touchstart", detectClick);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleRotate = (rotateAngle: number) => setAngle(rotateAngle);
 

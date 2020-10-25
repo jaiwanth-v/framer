@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 import $ from "jquery";
 import "./DarkMode.scss";
 import {
@@ -9,21 +10,25 @@ import {
 interface Props {}
 
 const DarkMode: React.FC<Props> = () => {
-  const [isDark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
 
   function toggleDarkMode() {
     setFetchMethod(window.fetch);
-    if (isDark)
+    if (!dark) {
+      window.localStorage.setItem("dark", "1");
       enableDarkMode({
         brightness: 100,
         contrast: 100,
         sepia: 10,
       });
-    else disableDarkMode();
-    setDark(!isDark);
+    } else {
+      window.localStorage.setItem("dark", "0");
+      disableDarkMode();
+    }
+    setDark(!dark);
   }
   function toggleDark() {
-    if (isDark) {
+    if (!dark) {
       $("#light-mode-switch").css("display", "none");
       $("#dark-mode-switch").css("display", "block");
     } else {
@@ -32,6 +37,19 @@ const DarkMode: React.FC<Props> = () => {
     }
     toggleDarkMode();
   }
+
+  useEffect(() => {
+    if (window.localStorage.getItem("dark") === "1") toggleDark();
+  }, []);
+
+  useEffect(() => {
+    function doc_keyUp(e: KeyboardEvent) {
+      if (e.altKey && e.key === "D") toggleDark();
+    }
+    window.addEventListener("keyup", doc_keyUp);
+    return () => window.removeEventListener("keyup", doc_keyUp);
+  }, [dark]);
+
   return (
     <div
       className="mode-switch shadow d-flex justify-content-center align-items-center"

@@ -48,6 +48,7 @@ const DropdownOptions: React.FC<Props> = () => {
     <>
       <CustomForm onSubmit={handleSubmit}>
         <TextField
+          autoFocus
           value={value}
           onChange={handleValue}
           label="Placeholder"

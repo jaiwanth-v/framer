@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./Options.scss";
 import { AppContext } from "../../Context/App.context";
 import { ADD_ITEM, SET_CURRENT } from "../../Reducer/actionTypes";
@@ -6,6 +6,61 @@ interface Props {}
 
 const Options: React.FC<Props> = () => {
   const { state, dispatch } = useContext(AppContext);
+
+  useEffect(() => {
+    function doc_keyUp(e: KeyboardEvent) {
+      if (state.edit && e.altKey && e.key === "1") {
+        dispatch({ type: ADD_ITEM, payload: "image" });
+      }
+      if (state.edit && e.altKey && e.key === "2") {
+        dispatch({ type: ADD_ITEM, payload: "text" });
+      }
+      if (state.edit && e.altKey && e.key === "3") {
+        dispatch({
+          type: SET_CURRENT,
+          payload: state.activeId === "canvas" ? null : "canvas",
+        });
+      }
+      if (state.edit && e.altKey && e.key === "4") {
+        dispatch({ type: ADD_ITEM, payload: "paragraph" });
+      }
+      if (state.edit && e.altKey && e.key === "5") {
+        dispatch({ type: ADD_ITEM, payload: "link" });
+      }
+      if (state.edit && e.altKey && e.key === "6") {
+        dispatch({ type: ADD_ITEM, payload: "heading" });
+      }
+      if (state.edit && e.altKey && e.key === "7") {
+        dispatch({ type: ADD_ITEM, payload: "button" });
+      }
+      if (state.edit && e.altKey && e.key === "8") {
+        dispatch({ type: ADD_ITEM, payload: "checkbox" });
+      }
+      if (state.edit && e.altKey && e.key === "9") {
+        dispatch({ type: ADD_ITEM, payload: "input" });
+      }
+      if (state.edit && e.altKey && e.key === "0") {
+        dispatch({ type: ADD_ITEM, payload: "dropdown" });
+      }
+      if (state.edit && e.altKey && e.key === "!") {
+        dispatch({ type: ADD_ITEM, payload: "radio" });
+      }
+      if (state.edit && e.altKey && e.key === "@") {
+        dispatch({ type: ADD_ITEM, payload: "line" });
+      }
+      if (state.edit && e.altKey && e.key === "#") {
+        dispatch({ type: ADD_ITEM, payload: "box" });
+      }
+      if (state.edit && e.altKey && e.key === "$") {
+        dispatch({ type: ADD_ITEM, payload: "arrow" });
+      }
+    }
+    window.addEventListener("keyup", doc_keyUp);
+    return () => {
+      window.removeEventListener("keyup", doc_keyUp);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state]);
   return (
     state.edit && (
       <div id="options" className="options shadow rounded-lg h-75 p-4 mt-5">

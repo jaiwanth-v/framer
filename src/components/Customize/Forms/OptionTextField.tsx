@@ -14,7 +14,6 @@ const OptionTextField: React.FC<Props> = ({ index }) => {
       onChange={handleOption}
       label={`Option ${index}`}
       className="form-field animation a3"
-      name=""
     />
   );
 };

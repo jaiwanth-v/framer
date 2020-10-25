@@ -37,7 +37,6 @@ const HeadingForm: React.FC<Props> = () => {
           onChange={handleSource}
           label="Heading"
           className="form-field animation a3"
-          name=""
         />
         <button id="generate1" type="submit" className="animation ml-2 mt-3 a6">
           Change Heading

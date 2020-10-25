@@ -1,4 +1,28 @@
 .frame-container {
+  .resizable {
+    width: auto;
+    height: auto;
+  }
+  .resizable h3 {
+    text-align: center;
+    margin: 0;
+  }
+  .containment-wrapper .draggable-pointer {
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    float: left;
+    clear: both;
+  }
+  .containment-wrapper .draggable-pointer:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+    float: left;
+    clear: both;
+  }
+
   .frame {
     position: absolute;
     top: 40px;
@@ -64,4 +88,18 @@
 
 .form-container {
   width: 15%;
+}
+
+.MuiBackdrop-root {
+  background-color: unset !important;
+}
+.MuiDialog-root {
+  position: unset !important;
+  width: 1524px !important;
+}
+
+.keyboard-icon {
+  &:hover {
+    transform: scale(1.01);
+  }
 }

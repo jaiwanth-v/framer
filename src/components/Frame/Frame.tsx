@@ -11,6 +11,7 @@ import FrameItem from "./FrameItem/FrameItem";
 import Toggler from "./Toggler";
 import Canvas from "./Canvas/Canvas";
 import DarkMode from "./DarkMode/DarkMode";
+import CustomizedDialogs from "./Dialog";
 
 interface Props {}
 
@@ -31,9 +32,7 @@ const Frame: React.FC<Props> = () => {
       if (e.key === "Delete") dispatch({ type: DELETE_COMPONENT });
     });
   }, [dispatch]);
-  const handleChange = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleChange = () => {
     dispatch({ type: TOGGLE_EDIT });
   };
 
@@ -50,6 +49,7 @@ const Frame: React.FC<Props> = () => {
 
   return (
     <div>
+      <CustomizedDialogs />
       <div
         id="dark"
         style={{ position: "fixed", top: "720px", left: "1440px" }}
